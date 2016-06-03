@@ -1,0 +1,138 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Lela\Desktop\VHDL projekat 4.5.2016\simulation\modelsim
+Eif_decode
+w1464124493
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 dC:\Users\Lela\Desktop\VHDL projekat 4.5.2016\simulation\modelsim
+8C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd
+FC:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd
+l0
+L6
+VA<f`6bSb@0dhS3OCWlB]O3
+!s100 1SJlkYPIziMiT?ia2Z9O:2
+Z5 OV;C;10.1d;51
+31
+!i10b 1
+!s108 1464182208.237000
+!s90 -reportprogress|300|-93|-work|work|C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd|
+!s107 C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd|
+Z6 o-93 -work work -O0
+Z7 tExplicit 1
+Eif_jedinica
+Z8 w1464112347
+R1
+R2
+R3
+R4
+Z9 8C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd
+Z10 FC:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd
+l0
+L5
+VeVGTBmPCElG<2h<dh6[8c2
+R5
+31
+Z11 !s108 1464182207.779000
+Z12 !s90 -reportprogress|300|-93|-work|work|C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd|
+Z13 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd|
+R6
+R7
+!s100 j:LLV=3Z_NO]eIW4L]1eM3
+!i10b 1
+Aimpl
+R1
+R2
+R3
+DEx4 work 11 if_jedinica 0 22 eVGTBmPCElG<2h<dh6[8c2
+l30
+L26
+V6gX?c;VViaI=`41@HKV_W0
+R5
+31
+R11
+R12
+R13
+R6
+R7
+!s100 Y>BzjL9j^HFfBz8`h7cBH1
+!i10b 1
+Pinstrset
+R1
+R2
+R3
+Z14 w1462450494
+R4
+Z15 8C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd
+Z16 FC:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd
+l0
+L6
+Vf`B9oNOT=h;SlYKlG>FZK0
+R5
+31
+b1
+Z17 !s108 1464182207.351000
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd|
+Z19 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd|
+R6
+R7
+!s100 3_0gAg;2TB;KWQTLOa82l2
+!i10b 1
+Bbody
+DPx4 work 8 instrset 0 22 f`B9oNOT=h;SlYKlG>FZK0
+R1
+R2
+R3
+l0
+L61
+Vlh9`@DT6J=@HRezg^GkFg1
+R5
+31
+R17
+R18
+R19
+R6
+R7
+nbody
+!s100 U:GL8zLaJ=>g;50TNgEY@2
+!i10b 1
+Eregfile
+Z20 w1464018730
+R1
+R2
+R3
+R4
+Z21 8C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd
+Z22 FC:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd
+l0
+L5
+VRO3WO0>oRKH>nU9l40^6D1
+R5
+31
+Z23 !s108 1464182206.154000
+Z24 !s90 -reportprogress|300|-93|-work|work|C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd|
+Z25 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd|
+R6
+R7
+!s100 SoS1fbm_zbhDBCdU;:Y_k1
+!i10b 1
+Artl
+R1
+R2
+R3
+DEx4 work 7 regfile 0 22 RO3WO0>oRKH>nU9l40^6D1
+l42
+L37
+VAKKmnF1AhC^O`BT8Z7Q5]3
+R5
+31
+R23
+R24
+R25
+R6
+R7
+!s100 C_F;b5e1Pg?gYdQEE>K@F1
+!i10b 1

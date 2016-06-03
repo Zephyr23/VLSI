@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="cpu">
+		<CBX_INST_ENTRY INSTANCE_NAME="|if_decode|InstrCache:instr_cache|altsyncram:memory_rtl_0" CBX_FILE_NAME="altsyncram_no61.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

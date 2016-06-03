@@ -1,0 +1,57 @@
+library ieee; 
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity MEM is 
+	port(
+		clk : in std_logic;
+		reset: in std_logic;
+		
+		rd:out std_logic; --citanje
+		wr:out std_logic;  --upis
+		
+	-- Izlazni signali iz ALU jedinice
+	data_alu_out : out std_logic_vector((data_length - 1) downto 0);
+	psw_alu_out : out std_logic_vector((data_length - 1) downto 0)
+	
+	-- instrukcija
+	instr : in std_logic_vector((address_length - 1) downto 0)
+	
+		addr_bus: out std_logic_vector(31 downto 0);
+		data_bus_out: out std_logic_vector(31 downto 0);
+		data_bus_in: in std_logic_vector(31 downto 0);
+	
+	
+		);
+end entity;
+
+architecture rtl of MEM is
+
+begin
+
+	process (clk) is
+	variable load_pom: std_logic_vector(31 downto 0);
+	begin
+	if (instr(31 downto 26)="000001")then --ako je store
+	
+		addr_bus<=data_alu_out; --adresa gde treba da se smesti rec iz reg Rs2 (instr(15..11))
+		data_bus_out<=store_ex; --saljem u mem
+		wr<='1';
+		else
+		wr<='0';
+		end if;
+		
+	if(instr(31 downto 26)="000000")then -- load 
+	
+		addr_bus<=data_alu_out; -- adresa odakle se dohvata rec i smesta u reg Rd(instr(25..21))
+		load_pom :=data_bus_in   --uzimam iz mem
+		rd<='1';
+		else
+		rd<='0';
+		end if;
+	
+	
+	
+	end process;
+	end architecture;
+	

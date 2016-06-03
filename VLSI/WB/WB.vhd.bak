@@ -1,0 +1,29 @@
+library ieee; 
+
+use work.paket.all;
+use ieee.std_logic_1164.all;
+
+use ieee.numeric_std.all;
+
+entity WB is 
+	port(
+		clk : in std_logic;
+		reset: in std_logic;
+		
+		Rd_mem : in std_logic_vector(25  downto 21); -- load dohvata iz mem i smesta u Rd
+		rez_mem: in std_logic_vector(31 downto 0);
+	);
+	
+end entity WB;
+
+architecture rtl of WB is
+begin
+	process (rez_mem,Rd_mem) is
+	begin
+	--ukoliko je load radi se upis sadrzaja registra Rd u regfile
+	
+	
+	--u slucaju ALU instrukcija sadrzaj registra sa alu_out u regfile 
+	
+	end process;
+end architecture;

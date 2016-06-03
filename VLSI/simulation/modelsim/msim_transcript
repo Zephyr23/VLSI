@@ -1,0 +1,62 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do cpu_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Regfile
+# -- Compiling architecture rtl of Regfile
+# vcom -93 -work work {C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package instrSet
+# -- Compiling package body instrSet
+# -- Loading package instrSet
+# vcom -93 -work work {C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity if_jedinica
+# -- Compiling architecture impl of if_jedinica
+# vcom -93 -work work {C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity if_decode
+# -- Compiling architecture rtl of if_decode
+# -- Loading entity if_jedinica
+# ** Error: (vcom-11) Could not find work.decode.
+# 
+# ** Error: C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd(56): (vcom-1195) Cannot find expanded name "work.Decode".
+# 
+# ** Error: C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd(56): Unknown expanded name.
+# ** Error: (vcom-11) Could not find work.instrcache.
+# 
+# ** Error: C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd(62): (vcom-1195) Cannot find expanded name "work.InstrCache".
+# 
+# ** Error: C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd(62): Unknown expanded name.
+# ** Error: C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd(66): VHDL Compiler exiting
+# ** Error: C:/altera/13.0sp1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./cpu_run_msim_rtl_vhdl.do line 11
+# C:/altera/13.0sp1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd}"
