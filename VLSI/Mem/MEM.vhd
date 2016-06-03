@@ -65,7 +65,7 @@ begin
 	
 	instr_out <= instr;
 	rd_reg <=load_pom;
-	
+	--test
 	end process;
 	end architecture;
 	
