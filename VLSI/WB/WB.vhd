@@ -1,7 +1,5 @@
 library ieee; 
-
 use ieee.std_logic_1164.all;
-
 use ieee.numeric_std.all;
 
 entity WB is 
@@ -24,23 +22,28 @@ generic(
 		instr_in : in std_logic_vector((address_length - 1) downto 0); -- instrukcija ka wb fazi
 		
 		rd_reg : in std_logic_vector(31 downto 0);
+		reg_wr : in std_logic; -- signal za instr koja upisuje u regfile
 	);
 	
 end entity WB;
 
 architecture rtl of WB is
 begin
-	process (data_from_mem,instr_in(25 downto 21)) is
+	process (clk) is
 	begin
+	
+	if(reg_wr= '1') then -- ako je instrukcija koja upisuje u regfile
 	
 	reg_data <= data_from_mem;
 	reg_addr <= instr_in(25 downto 21); -- adresa registra RD za aritm i log operacije iz ALU 
 	
-	--ukoliko je load radi se upis sadrzaja registra Rd u regfile
-	if(instr_in(31 downto 26)="000000")then --load
+	if(instr_in(31 downto 26)="000000")then --ukoliko je load radi se upis sadrzaja registra Rd u regfile
 	reg_data <= rd_reg;
-	
 	end if;
 	
+	wr<='1';
+	else
+	wr<='0';
+	end if;
 	end process;
 end architecture;
