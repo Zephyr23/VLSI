@@ -18,7 +18,7 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-# Date created = 17:07:19  May 04, 2016
+# Date created = 13:41:55  June 04, 2016
 #
 # -------------------------------------------------------------------------- #
 #
@@ -40,7 +40,7 @@ set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896I8
 set_global_assignment -name TOP_LEVEL_ENTITY if_decode
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:07:19  MAY 04, 2016"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:41:55  JUNE 04, 2016"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
@@ -50,30 +50,18 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH if_decode_vhd_tst -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME InstrCache_vhd_tst -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id InstrCache_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "50 ns" -section_id InstrCache_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME InstrCache_vhd_tst -section_id InstrCache_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/InstrCache.vht -section_id InstrCache_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_NAME if_decode_vhd_tst -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id if_decode_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 ms" -section_id if_decode_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME if_decode_vhd_tst -section_id if_decode_vhd_tst
-set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/if_decode.vht -section_id if_decode_vhd_tst
+set_global_assignment -name VHDL_TEST_BENCH_FILE simulation/modelsim/if_decode.vht
+set_global_assignment -name VHDL_FILE WB/WB.vhd
+set_global_assignment -name VHDL_FILE Regfile/Regfile.vhd
+set_global_assignment -name VHDL_FILE Mem/MEM.vhd
+set_global_assignment -name VHDL_FILE InstructionCache/InstructionCache.vhd
+set_global_assignment -name VHDL_FILE InstrConst/InstrCosnt.vhd
+set_global_assignment -name VHDL_FILE if_decode/if_decode.vhd
+set_global_assignment -name VHDL_FILE IF/if.vhd
+set_global_assignment -name VHDL_FILE EX/EX.vhd
+set_global_assignment -name VHDL_FILE Decode/Decode.vhd
+set_global_assignment -name VHDL_FILE DataCache/DataCache.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VHDL_FILE WB/WB.vhd
-set_global_assignment -name VHDL_FILE Mem/MEM.vhd
-set_global_assignment -name VHDL_FILE EX/EX.vhd
-set_global_assignment -name VHDL_FILE Regfile/Regfile.vhd
-set_global_assignment -name VHDL_FILE InstructionCache/InstructionCache.vhd
-set_global_assignment -name VHDL_FILE InstrConst/InstrCosnt.vhd
-set_global_assignment -name VHDL_TEST_BENCH_FILE simulation/modelsim/InstrCache.vht
-set_global_assignment -name VHDL_FILE IF/if.vhd
-set_global_assignment -name VHDL_FILE Decode/Decode.vhd
-set_global_assignment -name VHDL_FILE if_decode/if_decode.vhd
-set_global_assignment -name VHDL_TEST_BENCH_FILE simulation/modelsim/if_decode.vht
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -8,6 +8,7 @@ entity if_decode is
 	(
 		reg_adr_length	: integer := 5;
 		addr_length: integer := 32;
+		opcode_length: integer := 6;
 		instr_length : integer := 32;
 		reg_data_length	: integer  :=	32;
 		data_length	: integer  :=	32
@@ -57,8 +58,18 @@ architecture rtl of if_decode is
 
 	signal enable : std_logic;
 	signal instr_decode_exe : std_logic_vector(31 downto 0);
-
-
+	
+	signal opcode : std_logic_vector((opcode_length-1) downto 0);--out iz decode
+	signal rd_adr : std_logic_vector(4 downto 0);--out iz decode
+	signal imm_value : std_logic_vector (15 downto 0);--out iz decode
+	
+	signal opcode_ex : std_logic_vector((opcode_length-1) downto 0);--out iz exe
+	signal rd_adr_ex : std_logic_vector(4 downto 0);--out iz exe
+	signal ar_log : std_logic;--out iz exe
+	signal brnch : std_logic;--out iz exe
+	signal load : std_logic;--out iz exe
+	
+	
 
 begin
 
@@ -70,7 +81,8 @@ begin
 	decode_jedinica: entity work.Decode(impl)
 	port map (
 		clk,reset,pc_out,instr_IF_decode,instr_decode_exe,
-		wr,psw_wr,wr_adr,wr_data,psw_in,op1_data,op2_data,psw_out_decode
+		wr,psw_wr,wr_adr,wr_data,psw_in,op1_data,op2_data,psw_out_decode,
+		opcode,rd_adr,imm_value
 	);
 	
 	instr_cache: entity work.InstrCache(ins_cache_impl)
@@ -80,8 +92,10 @@ begin
 	
 	exe_jedinica: entity work.Exe(rtl)
 	port map (
-		clk,enable,op1_data,op2_data,st_value,instr_decode_exe,psw_out_decode,	
-	data_alu_out,psw_alu_out,instr_out
+		clk,enable,op1_data,op2_data,st_value,instr_decode_exe,
+		opcode,opcode_ex,rd_adr,rd_adr_ex,imm_value,
+		psw_out_decode,data_alu_out,psw_alu_out,instr_out,
+		ar_log,brnch,load
 	);
 end rtl;
 

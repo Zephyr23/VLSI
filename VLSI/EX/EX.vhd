@@ -26,6 +26,13 @@ port(
 	-- instrukcija
 	instr : in std_logic_vector((address_length - 1) downto 0);
 	
+		opcode : in std_logic_vector((opcode_length-1) downto 0);
+		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
+	
+		rd_adr: in std_logic_vector(4 downto 0);
+		rd_adr_out: out std_logic_vector(4 downto 0);
+		imm_value : in std_logic_vector (15 downto 0);
+	
 	-- Vrednost registra psw
 	psw_in : in std_logic_vector((data_length - 1) downto 0);
 	
@@ -33,7 +40,11 @@ port(
 	-- Izlazni signali iz ALU jedinica
 	data_alu_out : out std_logic_vector((data_length - 1) downto 0);
 	psw_alu_out : out std_logic_vector((data_length - 1) downto 0);
-	instr_out:out std_logic_vector((data_length-1) downto 0)
+	instr_out:out std_logic_vector((data_length-1) downto 0);
+	
+	ar_log: out std_logic;
+	brnch: out std_logic;
+	load : out std_logic
 	
 	);
 end entity;
@@ -44,32 +55,31 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 	constant zero_mask : std_logic_vector((data_length - 1) downto 0) := (others => '1');
 	
 	begin 
-	process(enable, instr(31 downto 26), op1_1, op2_1, psw_in)
+	process(enable, opcode, op1_1, op2_1, psw_in)
 		variable result : std_logic_vector(data_length downto 0);
 		variable psw : std_logic_vector((data_length - 1) downto 0);
-		variable imm: std_logic_vector(31 downto 0);
 		
 	begin
+	
+	ar_log<='0';
+	load<='0';
+	
 	
 		if (enable = '1') then
 			result := (others => 'Z');
 			psw := psw_in;
 		
-			case instr(31 downto 26) is
+			case opcode is
 			
 			--LOAD
 			when "000000" => 
-			imm(15 downto 0):= instr(15 downto 0);
-			imm(31 downto 16):= (others => imm(15));
-			result := std_logic_vector(('0' & unsigned(op1_1)) + ('0' & unsigned(imm)));
+			result := std_logic_vector(('0' & unsigned(op1_1)) + ("00000000000000000" & unsigned(imm_value)));
+			load <= '1';
 			
 			
 			--STORE
 			when "000001" => 
-			imm(15 downto 11) := instr(25 downto 21);
-			imm(10 downto 0):=  instr(10 downto 0);
-			imm(31 downto 16):= (others => imm(15));
-			result := std_logic_vector(('0' & unsigned(op1_1)) + ('0' & unsigned(imm)));
+			result := std_logic_vector(('0' & unsigned(op1_1)) + ("00000000000000000" & unsigned(imm_value)));
 			
 			--MOV
 			when "000100" =>
@@ -77,9 +87,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			
 			--MOVI
 			when "000101" =>
-				imm(15 downto 0):= instr(15 downto 0);
-				imm(31 downto 16):= (others => '0');
-				result := '0' & imm;
+				result := "00000000000000000" & imm_value;
 			
 			--Aritmeticke i logicke instrukcije
 			
@@ -99,6 +107,8 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				psw(29) := '0';
 				-- V
 				psw(28) := '0';
+			
+			ar_log<='1';
 			
 			--SUB
 			when "001001" => 
@@ -121,14 +131,12 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				else
 					psw(28) := '0';
 				end if;
-				
+				ar_log<='1';
 				
 			--SUBI
 			when "001100" => 
-				imm(15 downto 0):= instr(15 downto 0);
-				imm(31 downto 16):= (others => imm(15));
 			
-				result := std_logic_vector(('0' & unsigned(op1_1)) - ('0' & unsigned(imm)));
+				result := std_logic_vector(('0' & unsigned(op1_1)) - ("00000000000000000" & unsigned(imm_value)));
 				-- N
 				psw(31) := result(data_length - 1);
 				-- Z
@@ -140,19 +148,18 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				-- C
 				psw(29) := result(data_length);
 				-- V
-				if ((op1_1(data_length - 1) xor imm(data_length - 1))
+				if ((op1_1(data_length - 1) xor imm_value(15))
 					and (op1_1(data_length - 1) xor result(data_length - 1))) = '1' then
 					psw(28) := '1';
 				else
 					psw(28) := '0';
 				end if;
+			ar_log<='1';
 			
 			--ADDI
 			when "001101" => 
-				imm(15 downto 0):= instr(15 downto 0);
-				imm(31 downto 16):= (others => imm(15));
-				
-				result := std_logic_vector(('0' & unsigned(op1_1)) + ('0' & unsigned(imm)));
+			
+				result := std_logic_vector(('0' & unsigned(op1_1)) + ("00000000000000000" & unsigned(imm_value)));
 				-- N
 				psw(31) := result(data_length - 1);
 				-- Z
@@ -164,13 +171,14 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				-- C
 				psw(29) := result(data_length);
 				-- V
-				if (not (op1_1(data_length - 1) xor imm(data_length - 1))
+				if (not (op1_1(data_length - 1) xor imm_value(15))
 					and (op1_1(data_length - 1) xor result(data_length - 1))) = '1' then
 					psw(28) := '1';
 				else
 					psw(28) := '0';
 				end if;
 			
+			ar_log<='1';
 			
 			--ADD
 			when "001000" => 
@@ -193,6 +201,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				else
 					psw(28) := '0';
 				end if;
+				ar_log<='1';
 				
 			--OR
 			when "010001" => 
@@ -204,6 +213,8 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				else
 					psw(30) := '0';
 				end if;
+				
+				ar_log<='1';
 		
 			--XOR
 			when "010010" => 
@@ -216,27 +227,34 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 					psw(30) := '0';
 				end if;
 		
+				ar_log<='1';
 				
 			--NOT
 			when "010011" =>
 				result := '0' & (not op2_1);
+				ar_log<='1';
 				
 			--Pomeracke instrukcije		
 			--SHL
 			when "011000" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) sll to_integer(unsigned(op2_1)));
+				ar_log<='1';
 			--SHR
 			when "011001" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) srl to_integer(unsigned(op2_1)));
+				ar_log<='1';
 			--SAR
 			when "011010" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) sra to_integer(unsigned(op2_1)));
+				ar_log<='1';
 			--ROL
 			when "011011" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) rol to_integer(unsigned(op2_1)));
+				ar_log<='1';
 				--ROR
 			when "011100" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) ror to_integer(unsigned(op2_1)));
+				ar_log<='1';
 			
 			when others =>
 				null;
@@ -245,6 +263,8 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			data_alu_out <= result((data_length - 1) downto 0);
 			psw_alu_out <= psw;
 			st_value <= op2_1;
+			rd_adr_out <= rd_adr;
+			opcode_out <= opcode;
 			
 		else
 			data_alu_out <= (others => 'Z');

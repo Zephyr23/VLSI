@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cpu
-Wed Jun 01 17:28:11 2016
+Mon Jun 06 19:15:37 2016
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -28,9 +28,10 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  20. Parameter Settings for User Entity Instance: Exe:exe_jedinica
  21. Parameter Settings for Inferred Entity Instance: InstrCache:instr_cache|altsyncram:memory_rtl_0
  22. altsyncram Parameter Settings by Entity Instance
- 23. Port Connectivity Checks: "Decode:decode_jedinica|Regfile:regFile"
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
+ 23. Port Connectivity Checks: "Exe:exe_jedinica"
+ 24. Port Connectivity Checks: "Decode:decode_jedinica|Regfile:regFile"
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
 
 
 
@@ -56,15 +57,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jun 01 17:28:11 2016           ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun 06 19:15:37 2016           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; cpu                                             ;
 ; Top-level Entity Name              ; if_decode                                       ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 160                                             ;
-;     Total combinational functions  ; 160                                             ;
-;     Dedicated logic registers      ; 10                                              ;
-; Total registers                    ; 10                                              ;
+; Total logic elements               ; 123                                             ;
+;     Total combinational functions  ; 107                                             ;
+;     Dedicated logic registers      ; 42                                              ;
+; Total registers                    ; 42                                              ;
 ; Total pins                         ; 130                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 27,000                                          ;
@@ -164,66 +165,66 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 4      ;
+; Number detected on machine ; 2      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                             ;
-+-----------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path        ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                         ; Library ;
-+-----------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------+---------+
-; EX/EX.vhd                               ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/EX/EX.vhd                               ;         ;
-; Regfile/Regfile.vhd                     ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Regfile/Regfile.vhd                     ;         ;
-; InstructionCache/InstructionCache.vhd   ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstructionCache/InstructionCache.vhd   ;         ;
-; InstrConst/InstrCosnt.vhd               ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/InstrConst/InstrCosnt.vhd               ;         ;
-; IF/if.vhd                               ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/IF/if.vhd                               ;         ;
-; Decode/Decode.vhd                       ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/Decode/Decode.vhd                       ;         ;
-; if_decode/if_decode.vhd                 ; yes             ; User VHDL File                                        ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/if_decode/if_decode.vhd                 ;         ;
-; altsyncram.tdf                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                     ;         ;
-; stratix_ram_block.inc                   ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc              ;         ;
-; lpm_mux.inc                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                        ;         ;
-; lpm_decode.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                     ;         ;
-; aglobal130.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                     ;         ;
-; a_rdenreg.inc                           ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                      ;         ;
-; altrom.inc                              ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                         ;         ;
-; altram.inc                              ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                         ;         ;
-; altdpram.inc                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                       ;         ;
-; db/altsyncram_no61.tdf                  ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/db/altsyncram_no61.tdf                  ;         ;
-; db/cpu.ram0_instrcache_63e5a243.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Lela/Desktop/VHDL projekat 4.5.2016/db/cpu.ram0_instrcache_63e5a243.hdl.mif ;         ;
-+-----------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                        ;
++-----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path        ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                    ; Library ;
++-----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------+---------+
+; Regfile/Regfile.vhd                     ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/Regfile/Regfile.vhd                     ;         ;
+; InstructionCache/InstructionCache.vhd   ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstructionCache/InstructionCache.vhd   ;         ;
+; InstrConst/InstrCosnt.vhd               ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstrConst/InstrCosnt.vhd               ;         ;
+; if_decode/if_decode.vhd                 ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/if_decode/if_decode.vhd                 ;         ;
+; IF/if.vhd                               ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/IF/if.vhd                               ;         ;
+; EX/EX.vhd                               ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/EX/EX.vhd                               ;         ;
+; Decode/Decode.vhd                       ; yes             ; User VHDL File                                        ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/Decode/Decode.vhd                       ;         ;
+; altsyncram.tdf                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
+; stratix_ram_block.inc                   ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
+; lpm_mux.inc                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
+; lpm_decode.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
+; aglobal130.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                ;         ;
+; a_rdenreg.inc                           ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
+; altrom.inc                              ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                    ;         ;
+; altram.inc                              ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                    ;         ;
+; altdpram.inc                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
+; db/altsyncram_no61.tdf                  ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/db/altsyncram_no61.tdf                  ;         ;
+; db/cpu.ram0_instrcache_63e5a243.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Nenad/Desktop/vlsi-master/VLSI/db/cpu.ram0_instrcache_63e5a243.hdl.mif ;         ;
++-----------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                                               ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------+
-; Resource                                    ; Usage                                                                                       ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 160                                                                                         ;
-;                                             ;                                                                                             ;
-; Total combinational functions               ; 160                                                                                         ;
-; Logic element usage by number of LUT inputs ;                                                                                             ;
-;     -- 4 input functions                    ; 96                                                                                          ;
-;     -- 3 input functions                    ; 19                                                                                          ;
-;     -- <=2 input functions                  ; 45                                                                                          ;
-;                                             ;                                                                                             ;
-; Logic elements by mode                      ;                                                                                             ;
-;     -- normal mode                          ; 120                                                                                         ;
-;     -- arithmetic mode                      ; 40                                                                                          ;
-;                                             ;                                                                                             ;
-; Total registers                             ; 10                                                                                          ;
-;     -- Dedicated logic registers            ; 10                                                                                          ;
-;     -- I/O registers                        ; 0                                                                                           ;
-;                                             ;                                                                                             ;
-; I/O pins                                    ; 130                                                                                         ;
-; Total memory bits                           ; 27000                                                                                       ;
-; Embedded Multiplier 9-bit elements          ; 0                                                                                           ;
-; Maximum fan-out node                        ; InstrCache:instr_cache|altsyncram:memory_rtl_0|altsyncram_no61:auto_generated|ram_block1a28 ;
-; Maximum fan-out                             ; 45                                                                                          ;
-; Total fan-out                               ; 890                                                                                         ;
-; Average fan-out                             ; 2.72                                                                                        ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 123   ;
+;                                             ;       ;
+; Total combinational functions               ; 107   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 51    ;
+;     -- 3 input functions                    ; 12    ;
+;     -- <=2 input functions                  ; 44    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 82    ;
+;     -- arithmetic mode                      ; 25    ;
+;                                             ;       ;
+; Total registers                             ; 42    ;
+;     -- Dedicated logic registers            ; 42    ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 130   ;
+; Total memory bits                           ; 27000 ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 69    ;
+; Total fan-out                               ; 776   ;
+; Average fan-out                             ; 2.54  ;
++---------------------------------------------+-------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -231,12 +232,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                      ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
-; |if_decode                                ; 160 (0)           ; 10 (0)       ; 27000       ; 0            ; 0       ; 0         ; 130  ; 0            ; |if_decode                                                                               ; work         ;
-;    |Exe:exe_jedinica|                     ; 150 (150)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|Exe:exe_jedinica                                                              ; work         ;
+; |if_decode                                ; 107 (0)           ; 42 (0)       ; 27000       ; 0            ; 0       ; 0         ; 130  ; 0            ; |if_decode                                                                               ; work         ;
+;    |Decode:decode_jedinica|               ; 23 (23)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|Decode:decode_jedinica                                                        ; work         ;
+;    |Exe:exe_jedinica|                     ; 74 (74)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|Exe:exe_jedinica                                                              ; work         ;
 ;    |InstrCache:instr_cache|               ; 0 (0)             ; 0 (0)        ; 27000       ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|InstrCache:instr_cache                                                        ; work         ;
 ;       |altsyncram:memory_rtl_0|           ; 0 (0)             ; 0 (0)        ; 27000       ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|InstrCache:instr_cache|altsyncram:memory_rtl_0                                ; work         ;
 ;          |altsyncram_no61:auto_generated| ; 0 (0)             ; 0 (0)        ; 27000       ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|InstrCache:instr_cache|altsyncram:memory_rtl_0|altsyncram_no61:auto_generated ; work         ;
-;    |if_jedinica:if_jedinica|              ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|if_jedinica:if_jedinica                                                       ; work         ;
+;    |if_jedinica:if_jedinica|              ; 10 (10)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |if_decode|if_jedinica:if_jedinica                                                       ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1320,7 +1322,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; InstrCache:instr_cache|instr[18]~reg0                    ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[17]~reg0                    ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[16]~reg0                    ; Lost fanout                          ;
-; if_jedinica:if_jedinica|pc[10..31]                       ; Lost fanout                          ;
+; if_jedinica:if_jedinica|pc_next[10..31]                  ; Lost fanout                          ;
 ; Total Number of Removed Registers = 1126                 ;                                      ;
 +----------------------------------------------------------+--------------------------------------+
 
@@ -1334,12 +1336,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;                                                         ; due to stuck port clock ; Decode:decode_jedinica|op1_adr[2], Decode:decode_jedinica|op1_adr[1],         ;
 ;                                                         ;                         ; Decode:decode_jedinica|op1_adr[0], Decode:decode_jedinica|op2_adr[4],         ;
 ;                                                         ;                         ; Decode:decode_jedinica|op2_adr[3], Decode:decode_jedinica|op2_adr[2],         ;
-;                                                         ;                         ; Decode:decode_jedinica|op2_adr[1], InstrCache:instr_cache|instr[20]~reg0,     ;
-;                                                         ;                         ; InstrCache:instr_cache|instr[19]~reg0, InstrCache:instr_cache|instr[18]~reg0, ;
-;                                                         ;                         ; InstrCache:instr_cache|instr[17]~reg0, InstrCache:instr_cache|instr[16]~reg0  ;
+;                                                         ;                         ; Decode:decode_jedinica|op2_adr[1], Decode:decode_jedinica|op2_adr[0],         ;
+;                                                         ;                         ; InstrCache:instr_cache|instr[20]~reg0, InstrCache:instr_cache|instr[19]~reg0, ;
+;                                                         ;                         ; InstrCache:instr_cache|instr[18]~reg0, InstrCache:instr_cache|instr[17]~reg0, ;
+;                                                         ;                         ; InstrCache:instr_cache|instr[16]~reg0                                         ;
 ; InstrCache:instr_cache|instr[2]~en                      ; Lost Fanouts            ; if_jedinica:if_jedinica|ird                                                   ;
-; Decode:decode_jedinica|Regfile:regFile|psw[31]          ; Stuck at GND            ; Decode:decode_jedinica|op2_adr[0]                                             ;
-;                                                         ; due to stuck port clock ;                                                                               ;
 +---------------------------------------------------------+-------------------------+-------------------------------------------------------------------------------+
 
 
@@ -1348,12 +1349,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 10    ;
+; Total registers                              ; 42    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 10    ;
+; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1393,15 +1394,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+-------------------------------------+------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 17:1               ; 11 bits   ; 121 LEs       ; 44 LEs               ; 77 LEs                 ; No         ; |if_decode|Exe:exe_jedinica|Mux7  ;
-; 17:1               ; 4 bits    ; 44 LEs        ; 24 LEs               ; 20 LEs                 ; No         ; |if_decode|Exe:exe_jedinica|Mux15 ;
-; 6:1                ; 15 bits   ; 60 LEs        ; 45 LEs               ; 15 LEs                 ; No         ; |if_decode|Exe:exe_jedinica|Mux20 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; 7:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[5]  ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[11] ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[0]  ;
+; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux25               ;
+; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux18               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -1420,6 +1423,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+-------+-------------------------------------------------+
 ; reg_adr_length  ; 5     ; Signed Integer                                  ;
 ; addr_length     ; 32    ; Signed Integer                                  ;
+; opcode_length   ; 6     ; Signed Integer                                  ;
 ; instr_length    ; 32    ; Signed Integer                                  ;
 ; reg_data_length ; 32    ; Signed Integer                                  ;
 ; data_length     ; 32    ; Signed Integer                                  ;
@@ -1568,6 +1572,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Exe:exe_jedinica"                                                                         ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; opcode_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; rd_adr_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ar_log     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; brnch      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; load       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------+
 ; Port Connectivity Checks: "Decode:decode_jedinica|Regfile:regFile" ;
 +------+-------+----------+------------------------------------------+
@@ -1592,88 +1609,115 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Jun 01 17:27:59 2016
+    Info: Processing started: Mon Jun 06 19:15:26 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file wb/wb.vhd
     Info (12022): Found design unit 1: WB-rtl
     Info (12023): Found entity 1: WB
-Info (12021): Found 2 design units, including 1 entities, in source file mem/mem.vhd
-    Info (12022): Found design unit 1: MEM-rtl
-    Info (12023): Found entity 1: MEM
-Info (12021): Found 2 design units, including 1 entities, in source file ex/ex.vhd
-    Info (12022): Found design unit 1: Exe-rtl
-    Info (12023): Found entity 1: Exe
 Info (12021): Found 2 design units, including 1 entities, in source file regfile/regfile.vhd
     Info (12022): Found design unit 1: Regfile-rtl
     Info (12023): Found entity 1: Regfile
+Info (12021): Found 2 design units, including 1 entities, in source file mem/mem.vhd
+    Info (12022): Found design unit 1: MEM-rtl
+    Info (12023): Found entity 1: MEM
 Info (12021): Found 2 design units, including 1 entities, in source file instructioncache/instructioncache.vhd
     Info (12022): Found design unit 1: InstrCache-ins_cache_impl
     Info (12023): Found entity 1: InstrCache
 Info (12021): Found 2 design units, including 0 entities, in source file instrconst/instrcosnt.vhd
     Info (12022): Found design unit 1: instrSet
     Info (12022): Found design unit 2: instrSet-body
-Info (12021): Found 2 design units, including 1 entities, in source file if/if.vhd
-    Info (12022): Found design unit 1: if_jedinica-impl
-    Info (12023): Found entity 1: if_jedinica
-Info (12021): Found 2 design units, including 1 entities, in source file decode/decode.vhd
-    Info (12022): Found design unit 1: Decode-impl
-    Info (12023): Found entity 1: Decode
 Info (12021): Found 2 design units, including 1 entities, in source file if_decode/if_decode.vhd
     Info (12022): Found design unit 1: if_decode-rtl
     Info (12023): Found entity 1: if_decode
+Info (12021): Found 2 design units, including 1 entities, in source file if/if.vhd
+    Info (12022): Found design unit 1: if_jedinica-impl
+    Info (12023): Found entity 1: if_jedinica
+Info (12021): Found 2 design units, including 1 entities, in source file ex/ex.vhd
+    Info (12022): Found design unit 1: Exe-rtl
+    Info (12023): Found entity 1: Exe
+Info (12021): Found 2 design units, including 1 entities, in source file decode/decode.vhd
+    Info (12022): Found design unit 1: Decode-impl
+    Info (12023): Found entity 1: Decode
+Info (12021): Found 2 design units, including 1 entities, in source file datacache/datacache.vhd
+    Info (12022): Found design unit 1: DataCache-rtl
+    Info (12023): Found entity 1: DataCache
 Info (12127): Elaborating entity "if_decode" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(48): used implicit default value for signal "wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(49): used implicit default value for signal "psw_wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(50): used implicit default value for signal "wr_adr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(51): used implicit default value for signal "wr_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(52): used implicit default value for signal "psw_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(58): used implicit default value for signal "enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(49): used implicit default value for signal "wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(50): used implicit default value for signal "psw_wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(51): used implicit default value for signal "wr_adr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(52): used implicit default value for signal "wr_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(53): used implicit default value for signal "psw_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(59): used implicit default value for signal "enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at if_decode.vhd(66): object "opcode_ex" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at if_decode.vhd(67): object "rd_adr_ex" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at if_decode.vhd(68): object "ar_log" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at if_decode.vhd(69): object "brnch" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at if_decode.vhd(70): object "load" assigned a value but never read
 Info (12129): Elaborating entity "if_jedinica" using architecture "A:impl" for hierarchy "if_jedinica:if_jedinica"
-Warning (10541): VHDL Signal Declaration warning at if.vhd(21): used implicit default value for signal "pc_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10492): VHDL Process Statement warning at if.vhd(37): signal "initial_PC" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at if.vhd(38): signal "initial_PC" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12129): Elaborating entity "Decode" using architecture "A:impl" for hierarchy "Decode:decode_jedinica"
-Warning (10036): Verilog HDL or VHDL warning at Decode.vhd(38): object "imm_value" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Decode.vhd(39): object "imm_pom" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at Decode.vhd(41): used implicit default value for signal "psw_rd" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at Decode.vhd(44): used implicit default value for signal "psw_rd" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12129): Elaborating entity "Regfile" using architecture "A:rtl" for hierarchy "Decode:decode_jedinica|Regfile:regFile"
 Info (12129): Elaborating entity "InstrCache" using architecture "A:ins_cache_impl" for hierarchy "InstrCache:instr_cache"
 Info (12129): Elaborating entity "Exe" using architecture "A:rtl" for hierarchy "Exe:exe_jedinica"
-Warning (10541): VHDL Signal Declaration warning at EX.vhd(36): used implicit default value for signal "instr_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10631): VHDL Process Statement warning at EX.vhd(47): inferring latch(es) for signal or variable "imm", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at EX.vhd(47): inferring latch(es) for signal or variable "st_value", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "st_value[0]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[1]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[2]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[3]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[4]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[5]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[6]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[7]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[8]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[9]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[10]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[11]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[12]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[13]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[14]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[15]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[16]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[17]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[18]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[19]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[20]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[21]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[22]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[23]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[24]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[25]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[26]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[27]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[28]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[29]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[30]" at EX.vhd(47)
-Info (10041): Inferred latch for "st_value[31]" at EX.vhd(47)
+Warning (10541): VHDL Signal Declaration warning at EX.vhd(43): used implicit default value for signal "instr_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at EX.vhd(46): used implicit default value for signal "brnch" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10492): VHDL Process Statement warning at EX.vhd(76): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(82): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(90): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(139): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(151): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(162): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(174): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(266): signal "rd_adr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "st_value", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "rd_adr_out", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "opcode_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "opcode_out[0]" at EX.vhd(58)
+Info (10041): Inferred latch for "opcode_out[1]" at EX.vhd(58)
+Info (10041): Inferred latch for "opcode_out[2]" at EX.vhd(58)
+Info (10041): Inferred latch for "opcode_out[3]" at EX.vhd(58)
+Info (10041): Inferred latch for "opcode_out[4]" at EX.vhd(58)
+Info (10041): Inferred latch for "opcode_out[5]" at EX.vhd(58)
+Info (10041): Inferred latch for "rd_adr_out[0]" at EX.vhd(58)
+Info (10041): Inferred latch for "rd_adr_out[1]" at EX.vhd(58)
+Info (10041): Inferred latch for "rd_adr_out[2]" at EX.vhd(58)
+Info (10041): Inferred latch for "rd_adr_out[3]" at EX.vhd(58)
+Info (10041): Inferred latch for "rd_adr_out[4]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[0]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[1]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[2]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[3]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[4]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[5]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[6]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[7]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[8]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[9]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[10]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[11]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[12]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[13]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[14]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[15]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[16]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[17]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[18]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[19]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[20]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[21]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[22]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[23]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[24]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[25]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[26]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[27]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[28]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[29]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[30]" at EX.vhd(58)
+Info (10041): Inferred latch for "st_value[31]" at EX.vhd(58)
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[2]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[1]" feeding internal logic into a wire
@@ -1711,8 +1755,6 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[29]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[30]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[31]" feeding internal logic into a wire
-Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[30]" is permanently disabled
-Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[29]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[28]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[27]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[26]" is permanently disabled
@@ -1742,7 +1784,9 @@ Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[3]" is permanently d
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[2]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[1]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[0]" is permanently disabled
+Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[30]" is permanently disabled
 Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[31]" is permanently disabled
+Warning (14025): LATCH primitive "Exe:exe_jedinica|st_value[29]" is permanently disabled
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "InstrCache:instr_cache|memory_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to ROM
@@ -1881,15 +1925,15 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (17049): 70 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 317 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 280 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 128 output pins
-    Info (21061): Implemented 160 logic cells
+    Info (21061): Implemented 123 logic cells
     Info (21064): Implemented 27 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 193 warnings
-    Info: Peak virtual memory: 528 megabytes
-    Info: Processing ended: Wed Jun 01 17:28:11 2016
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:05
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 206 warnings
+    Info: Peak virtual memory: 514 megabytes
+    Info: Processing ended: Mon Jun 06 19:15:37 2016
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 

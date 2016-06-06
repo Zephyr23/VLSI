@@ -17,7 +17,7 @@ entity Decode is
 	(
 		clk : in std_logic;
 		reset: in std_logic;
-		PC_addr: in std_logic_vector((addr_length-1) downto 0);
+		PC_addr: in std_logic_vector((addr_length-1) downto 0); --Vrednost PC dobijena iz if faze
 		instr_from_if:in std_logic_vector((instr_length-1) downto 0);
 		instr_out:out std_logic_vector((instr_length-1) downto 0);
 		
@@ -28,15 +28,18 @@ entity Decode is
 		psw_in: in std_logic_vector((reg_data_length-1) downto 0);
 		op1_data: out std_logic_vector((reg_data_length-1) downto 0);
 		op2_data: out std_logic_vector((reg_data_length-1) downto 0);
-		psw_out: out std_logic_vector((reg_data_length-1) downto 0)
+		psw_out: out std_logic_vector((reg_data_length-1) downto 0);
+		
+		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
+		rd_adr: out std_logic_vector(4 downto 0);
+		imm_value : out std_logic_vector (15 downto 0)
+		
 	);
 end Decode;
 
 
 architecture impl of Decode is
-	signal opcode : unsigned((opcode_length-1) downto 0);
-	signal imm_value : std_logic_vector (15 downto 0);
-	signal imm_pom : std_logic_vector (4 downto 0);
+	
 	signal op1_adr, op2_adr : std_logic_vector((reg_adr_length-1) downto 0);
 	signal psw_rd : std_logic;
 	
@@ -59,16 +62,19 @@ begin
 		psw_out=>psw_out
 	);
 	
-	opcode <= unsigned (instr_from_if((instr_length-1) downto (instr_length-opcode_length)));
-	instr_out <= instr_from_if;
+	
 	
 	process(clk, reset) is
-	
+		variable opcode : std_logic_vector (5 downto 0);
 	begin
-	
+		
 		if (rising_edge(clk)) then
+		opcode := instr_from_if((instr_length-1) downto (instr_length-opcode_length));
+		instr_out <= instr_from_if;
+		opcode_out <= opcode;
 			if (opcode = "000000") then -- load
 				op1_adr <= instr_from_if (20 downto 16);
+				rd_adr <= instr_from_if (25 downto 21);
 				imm_value <= instr_from_if (15 downto 0);
 			end if;
 			if (opcode = "000001" or (opcode >= "101000" and opcode <= "101101")) then -- store, instrukcije uslovnog skoka
@@ -79,21 +85,27 @@ begin
 			end if;
 			if (opcode = "000100") then -- mov
 				op1_adr <= instr_from_if (20 downto 16);
+				rd_adr <= instr_from_if (25 downto 21);
 			end if;
 			if (opcode = "000101") then -- movi
 				imm_value <= instr_from_if(15 downto 0);
+				rd_adr <= instr_from_if (25 downto 21);
 			end if;
 			if (opcode = "001000" or opcode = "001001" or (opcode >= "010000" and opcode <= "010011")) then --add, sub, and, or, xor, not
 				op1_adr <= instr_from_if (20 downto 16);
 				op2_adr <= instr_from_if (15 downto 11);
+				rd_adr <= instr_from_if (25 downto 21);
 			end if;
 			if (opcode = "001100" or opcode = "001101") then --addi, subi
 				op1_adr <= instr_from_if (20 downto 16);
 				imm_value <= instr_from_if (15 downto 0);
+				rd_adr <= instr_from_if (25 downto 21);
 			end if;
 			if (opcode >= "011000" and opcode <= "011100") then --pomeracke instrukcije
 				op1_adr <= instr_from_if (25 downto 21);
-				imm_pom <= instr_from_if (15 downto 11);
+				imm_value(4 downto 0) <= instr_from_if (15 downto 11);
+				imm_value(15 downto 5)<= (others => '0');
+				rd_adr <= instr_from_if (25 downto 21);
 			end if;
 			if (opcode = "100000" or opcode = "100001") then --jmp, jsr
 				op1_adr <= instr_from_if(20 downto 16);
@@ -103,7 +115,11 @@ begin
 				op1_adr <= instr_from_if (20 downto 16);
 			end if;
 			
-			--rts i pop nemaju prosledjivanje vrednosti registra
+			if (opcode = "100101") then --pop
+				rd_adr <= instr_from_if (25 downto 21);
+			end if;
+			
+			--rts nema prosledjivanje vrednosti registra
 		end if;
 	
 	end process;
