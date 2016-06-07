@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cpu
-Mon Jun 06 19:15:37 2016
+Tue Jun 07 16:38:56 2016
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -57,7 +57,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jun 06 19:15:37 2016           ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 07 16:38:56 2016           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; cpu                                             ;
 ; Top-level Entity Name              ; if_decode                                       ;
@@ -290,6 +290,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; InstrCache:instr_cache|instr[30]~en                      ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[31]~en                      ; Lost fanout                          ;
 ; if_jedinica:if_jedinica|ird                              ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[0]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[1]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[2]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[3]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[4]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[0]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[1]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[2]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[3]~en                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[4]~en                     ; Lost fanout                          ;
 ; Decode:decode_jedinica|Regfile:regFile|registers[31][0]  ; Stuck at GND due to stuck port clock ;
 ; Decode:decode_jedinica|Regfile:regFile|registers[0][31]  ; Stuck at GND due to stuck port clock ;
 ; Decode:decode_jedinica|Regfile:regFile|registers[0][30]  ; Stuck at GND due to stuck port clock ;
@@ -1315,33 +1325,37 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Decode:decode_jedinica|Regfile:regFile|registers[31][2]  ; Stuck at GND due to stuck port clock ;
 ; Decode:decode_jedinica|Regfile:regFile|registers[31][1]  ; Stuck at GND due to stuck port clock ;
 ; Decode:decode_jedinica|Regfile:regFile|psw[0..31]        ; Stuck at GND due to stuck port clock ;
-; Decode:decode_jedinica|op1_adr[0..4]                     ; Lost fanout                          ;
-; Decode:decode_jedinica|op2_adr[0..4]                     ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[4]                        ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[20]~reg0                    ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[3]                        ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[19]~reg0                    ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[2]                        ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[18]~reg0                    ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[1]                        ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[17]~reg0                    ; Lost fanout                          ;
+; Decode:decode_jedinica|op1_adr[0]                        ; Lost fanout                          ;
 ; InstrCache:instr_cache|instr[16]~reg0                    ; Lost fanout                          ;
+; Decode:decode_jedinica|op2_adr[0..4]                     ; Lost fanout                          ;
 ; if_jedinica:if_jedinica|pc_next[10..31]                  ; Lost fanout                          ;
-; Total Number of Removed Registers = 1126                 ;                                      ;
+; Total Number of Removed Registers = 1136                 ;                                      ;
 +----------------------------------------------------------+--------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                       ;
-+---------------------------------------------------------+-------------------------+-------------------------------------------------------------------------------+
-; Register name                                           ; Reason for Removal      ; Registers Removed due to This Register                                        ;
-+---------------------------------------------------------+-------------------------+-------------------------------------------------------------------------------+
-; Decode:decode_jedinica|Regfile:regFile|registers[31][0] ; Stuck at GND            ; Decode:decode_jedinica|op1_adr[4], Decode:decode_jedinica|op1_adr[3],         ;
-;                                                         ; due to stuck port clock ; Decode:decode_jedinica|op1_adr[2], Decode:decode_jedinica|op1_adr[1],         ;
-;                                                         ;                         ; Decode:decode_jedinica|op1_adr[0], Decode:decode_jedinica|op2_adr[4],         ;
-;                                                         ;                         ; Decode:decode_jedinica|op2_adr[3], Decode:decode_jedinica|op2_adr[2],         ;
-;                                                         ;                         ; Decode:decode_jedinica|op2_adr[1], Decode:decode_jedinica|op2_adr[0],         ;
-;                                                         ;                         ; InstrCache:instr_cache|instr[20]~reg0, InstrCache:instr_cache|instr[19]~reg0, ;
-;                                                         ;                         ; InstrCache:instr_cache|instr[18]~reg0, InstrCache:instr_cache|instr[17]~reg0, ;
-;                                                         ;                         ; InstrCache:instr_cache|instr[16]~reg0                                         ;
-; InstrCache:instr_cache|instr[2]~en                      ; Lost Fanouts            ; if_jedinica:if_jedinica|ird                                                   ;
-+---------------------------------------------------------+-------------------------+-------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                   ;
++---------------------------------------------------------+-------------------------+---------------------------------------------------------------------------+
+; Register name                                           ; Reason for Removal      ; Registers Removed due to This Register                                    ;
++---------------------------------------------------------+-------------------------+---------------------------------------------------------------------------+
+; Decode:decode_jedinica|Regfile:regFile|registers[31][0] ; Stuck at GND            ; Decode:decode_jedinica|op1_adr[4], InstrCache:instr_cache|instr[20]~reg0, ;
+;                                                         ; due to stuck port clock ; Decode:decode_jedinica|op1_adr[3], InstrCache:instr_cache|instr[19]~reg0, ;
+;                                                         ;                         ; Decode:decode_jedinica|op1_adr[2], InstrCache:instr_cache|instr[18]~reg0, ;
+;                                                         ;                         ; Decode:decode_jedinica|op1_adr[1], InstrCache:instr_cache|instr[17]~reg0, ;
+;                                                         ;                         ; Decode:decode_jedinica|op1_adr[0], InstrCache:instr_cache|instr[16]~reg0, ;
+;                                                         ;                         ; Decode:decode_jedinica|op2_adr[4], Decode:decode_jedinica|op2_adr[3],     ;
+;                                                         ;                         ; Decode:decode_jedinica|op2_adr[2], Decode:decode_jedinica|op2_adr[1],     ;
+;                                                         ;                         ; Decode:decode_jedinica|op2_adr[0]                                         ;
+; InstrCache:instr_cache|instr[2]~en                      ; Lost Fanouts            ; if_jedinica:if_jedinica|ird                                               ;
++---------------------------------------------------------+-------------------------+---------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -1402,8 +1416,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 7:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[5]  ;
 ; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[11] ;
 ; 7:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |if_decode|Decode:decode_jedinica|imm_value[0]  ;
-; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux25               ;
-; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux18               ;
+; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux26               ;
+; 17:1               ; 16 bits   ; 176 LEs       ; 64 LEs               ; 112 LEs                ; No         ; |if_decode|Exe:exe_jedinica|Mux19               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
 
 
@@ -1572,17 +1586,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Exe:exe_jedinica"                                                                         ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; opcode_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; rd_adr_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; ar_log     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; brnch      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; load       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Exe:exe_jedinica"                                                                                              ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                  ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; opcode_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; rd_adr_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; ar_log     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; brnch      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; load       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; valid      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------+
@@ -1599,7 +1614,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -1609,7 +1624,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Jun 06 19:15:26 2016
+    Info: Processing started: Tue Jun 07 16:38:48 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file wb/wb.vhd
@@ -1642,6 +1657,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file decode/
 Info (12021): Found 2 design units, including 1 entities, in source file datacache/datacache.vhd
     Info (12022): Found design unit 1: DataCache-rtl
     Info (12023): Found entity 1: DataCache
+Info (12021): Found 2 design units, including 1 entities, in source file forward/forward.vhd
+    Info (12022): Found design unit 1: Forward-rtl
+    Info (12023): Found entity 1: Forward
 Info (12127): Elaborating entity "if_decode" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(49): used implicit default value for signal "wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at if_decode.vhd(50): used implicit default value for signal "psw_wr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -1664,60 +1682,60 @@ Info (12129): Elaborating entity "InstrCache" using architecture "A:ins_cache_im
 Info (12129): Elaborating entity "Exe" using architecture "A:rtl" for hierarchy "Exe:exe_jedinica"
 Warning (10541): VHDL Signal Declaration warning at EX.vhd(43): used implicit default value for signal "instr_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at EX.vhd(46): used implicit default value for signal "brnch" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10492): VHDL Process Statement warning at EX.vhd(76): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(82): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(90): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(139): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(151): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(162): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(174): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at EX.vhd(266): signal "rd_adr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "st_value", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "rd_adr_out", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at EX.vhd(58): inferring latch(es) for signal or variable "opcode_out", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "opcode_out[0]" at EX.vhd(58)
-Info (10041): Inferred latch for "opcode_out[1]" at EX.vhd(58)
-Info (10041): Inferred latch for "opcode_out[2]" at EX.vhd(58)
-Info (10041): Inferred latch for "opcode_out[3]" at EX.vhd(58)
-Info (10041): Inferred latch for "opcode_out[4]" at EX.vhd(58)
-Info (10041): Inferred latch for "opcode_out[5]" at EX.vhd(58)
-Info (10041): Inferred latch for "rd_adr_out[0]" at EX.vhd(58)
-Info (10041): Inferred latch for "rd_adr_out[1]" at EX.vhd(58)
-Info (10041): Inferred latch for "rd_adr_out[2]" at EX.vhd(58)
-Info (10041): Inferred latch for "rd_adr_out[3]" at EX.vhd(58)
-Info (10041): Inferred latch for "rd_adr_out[4]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[0]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[1]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[2]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[3]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[4]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[5]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[6]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[7]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[8]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[9]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[10]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[11]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[12]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[13]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[14]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[15]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[16]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[17]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[18]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[19]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[20]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[21]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[22]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[23]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[24]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[25]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[26]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[27]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[28]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[29]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[30]" at EX.vhd(58)
-Info (10041): Inferred latch for "st_value[31]" at EX.vhd(58)
+Warning (10492): VHDL Process Statement warning at EX.vhd(77): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(83): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(92): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(144): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(156): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(168): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(180): signal "imm_value" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at EX.vhd(282): signal "rd_adr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at EX.vhd(59): inferring latch(es) for signal or variable "st_value", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at EX.vhd(59): inferring latch(es) for signal or variable "rd_adr_out", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at EX.vhd(59): inferring latch(es) for signal or variable "opcode_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "opcode_out[0]" at EX.vhd(59)
+Info (10041): Inferred latch for "opcode_out[1]" at EX.vhd(59)
+Info (10041): Inferred latch for "opcode_out[2]" at EX.vhd(59)
+Info (10041): Inferred latch for "opcode_out[3]" at EX.vhd(59)
+Info (10041): Inferred latch for "opcode_out[4]" at EX.vhd(59)
+Info (10041): Inferred latch for "opcode_out[5]" at EX.vhd(59)
+Info (10041): Inferred latch for "rd_adr_out[0]" at EX.vhd(59)
+Info (10041): Inferred latch for "rd_adr_out[1]" at EX.vhd(59)
+Info (10041): Inferred latch for "rd_adr_out[2]" at EX.vhd(59)
+Info (10041): Inferred latch for "rd_adr_out[3]" at EX.vhd(59)
+Info (10041): Inferred latch for "rd_adr_out[4]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[0]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[1]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[2]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[3]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[4]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[5]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[6]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[7]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[8]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[9]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[10]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[11]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[12]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[13]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[14]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[15]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[16]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[17]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[18]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[19]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[20]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[21]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[22]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[23]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[24]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[25]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[26]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[27]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[28]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[29]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[30]" at EX.vhd(59)
+Info (10041): Inferred latch for "st_value[31]" at EX.vhd(59)
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[2]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[1]" feeding internal logic into a wire
@@ -1751,6 +1769,16 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[29]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[30]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "InstrCache:instr_cache|instr[31]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op2_adr[0]~0" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op2_adr[1]~1" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op2_adr[2]~2" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op2_adr[3]~3" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op2_adr[4]~4" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op1_adr[0]~0" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op1_adr[1]~1" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op1_adr[2]~2" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op1_adr[3]~3" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|op1_adr[4]~4" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[28]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[29]" feeding internal logic into a wire
     Warning (13049): Converted tri-state buffer "Decode:decode_jedinica|Regfile:regFile|psw_out[30]" feeding internal logic into a wire
@@ -1820,6 +1848,7 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "InstrCache:instr_cache|altsyncram:memory_rtl_0|altsyncram_no61:auto_generated|ram_block1a18"
         Warning (14320): Synthesized away node "InstrCache:instr_cache|altsyncram:memory_rtl_0|altsyncram_no61:auto_generated|ram_block1a19"
         Warning (14320): Synthesized away node "InstrCache:instr_cache|altsyncram:memory_rtl_0|altsyncram_no61:auto_generated|ram_block1a20"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13008): TRI or OPNDRN buffers permanently disabled
     Warning (13010): Node "Exe:exe_jedinica|data_alu_out[0]"
     Warning (13010): Node "Exe:exe_jedinica|data_alu_out[1]"
@@ -1922,7 +1951,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "st_value[29]" is stuck at GND
     Warning (13410): Pin "st_value[30]" is stuck at GND
     Warning (13410): Pin "st_value[31]" is stuck at GND
-Info (17049): 70 registers lost all their fanouts during netlist optimizations.
+Info (17049): 80 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 280 device resources after synthesis - the final resource count might be different
@@ -1930,10 +1959,10 @@ Info (21057): Implemented 280 device resources after synthesis - the final resou
     Info (21059): Implemented 128 output pins
     Info (21061): Implemented 123 logic cells
     Info (21064): Implemented 27 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 206 warnings
-    Info: Peak virtual memory: 514 megabytes
-    Info: Processing ended: Mon Jun 06 19:15:37 2016
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:10
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 217 warnings
+    Info: Peak virtual memory: 511 megabytes
+    Info: Processing ended: Tue Jun 07 16:38:56 2016
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:06
 
 

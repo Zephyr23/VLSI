@@ -19,7 +19,10 @@ entity if_jedinica is
 		instr:in std_logic_vector((instr_length-1) downto 0);--instrukcija iz kesa
 		ird:out std_logic;--signal instrCache da hoce da cita
 		pc_out: out std_logic_vector((addr_length-1) downto 0);--prosledjivanje pc u narednu fazu
-		instr_to_decode: out std_logic_vector((instr_length-1) downto 0)--prosledjivanje instr u narednu fazu
+		instr_to_decode: out std_logic_vector((instr_length-1) downto 0);--prosledjivanje instr u narednu fazu
+		stall: in std_logic;
+		flush_out: out std_logic;
+		flush: in std_logic
 	);
 end if_jedinica;
 
@@ -39,7 +42,9 @@ begin
 			ird<= '0';
 		elsif (rising_edge(clk)) then
 			pc<=pc_next;
+			if(stall='0') then
 			pc_next <= std_logic_vector(unsigned(pc_next) + 1);
+			end if;
 			ird<='1';
 		end if;
 	
@@ -48,5 +53,6 @@ begin
 	IF_addr <= pc;
 	pc_out <= pc;
 	instr_to_decode<=instr;
+	flush_out <=flush;
 	
 end impl;

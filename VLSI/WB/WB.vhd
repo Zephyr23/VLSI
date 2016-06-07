@@ -30,6 +30,8 @@ generic(
 		rd_adr: in std_logic_vector(4 downto 0);
 		reg_wr : in std_logic; -- signal za instr koja upisuje u regfile
 		
+		flush_mem: in std_logic;
+		
 		ar_log: in std_logic;
 		load : in std_logic
 	);
@@ -41,13 +43,13 @@ begin
 	process (clk) is
 	begin
 	wr<='0';
-	if(ar_log = '1') then -- ako je instrukcija koja upisuje u regfile	
+	if(ar_log = '1' and flush_mem='0') then -- ako je instrukcija koja upisuje u regfile	
 		reg_data <= data_from_mem;
 		reg_addr <= rd_adr; -- adresa registra RD za aritm i log operacije iz ALU 
 		wr<='1';
 	end if;
 	
-	if(load = '1')then --ukoliko je load radi se upis sadrzaja registra Rd u regfile
+	if(load = '1' and flush_mem='0')then --ukoliko je load radi se upis sadrzaja registra Rd u regfile
 		reg_data <= data_from_cache;
 		reg_addr <= rd_adr;
 		wr<='1';

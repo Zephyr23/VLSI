@@ -14,7 +14,7 @@ generic(
 port(
 
 	clk : in std_logic;
-	enable: in std_logic;
+	
 	
 	
 	-- Vrednosti registara r1 i r2 
@@ -42,9 +42,14 @@ port(
 	psw_alu_out : out std_logic_vector((data_length - 1) downto 0);
 	instr_out:out std_logic_vector((data_length-1) downto 0);
 	
+	flush_out: out std_logic;
+	flush_id: in std_logic;
+	
+	
 	ar_log: out std_logic;
 	brnch: out std_logic;
-	load : out std_logic
+	load : out std_logic;
+	valid: out std_logic
 	
 	);
 end entity;
@@ -53,6 +58,7 @@ architecture rtl of Exe is
 
 constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0');
 	constant zero_mask : std_logic_vector((data_length - 1) downto 0) := (others => '1');
+	signal enable: std_logic;
 	
 	begin 
 	process(enable, opcode, op1_1, op2_1, psw_in)
@@ -61,9 +67,10 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 		
 	begin
 	
+	flush_out<=flush_id;
 	ar_log<='0';
 	load<='0';
-	
+	valid <='0';
 	
 		if (enable = '1') then
 			result := (others => 'Z');
@@ -84,10 +91,12 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			--MOV
 			when "000100" =>
 				result := '0' & op1_1;
+				valid <='1';
 			
 			--MOVI
 			when "000101" =>
 				result := "00000000000000000" & imm_value;
+				valid <='1';
 			
 			--Aritmeticke i logicke instrukcije
 			
@@ -109,6 +118,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				psw(28) := '0';
 			
 			ar_log<='1';
+			valid <='1';
 			
 			--SUB
 			when "001001" => 
@@ -132,6 +142,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 					psw(28) := '0';
 				end if;
 				ar_log<='1';
+				valid <='1';
 				
 			--SUBI
 			when "001100" => 
@@ -155,6 +166,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 					psw(28) := '0';
 				end if;
 			ar_log<='1';
+			valid <='1';
 			
 			--ADDI
 			when "001101" => 
@@ -179,6 +191,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				end if;
 			
 			ar_log<='1';
+			valid <='1';
 			
 			--ADD
 			when "001000" => 
@@ -202,6 +215,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 					psw(28) := '0';
 				end if;
 				ar_log<='1';
+				valid <='1';
 				
 			--OR
 			when "010001" => 
@@ -215,6 +229,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				end if;
 				
 				ar_log<='1';
+				valid <='1';
 		
 			--XOR
 			when "010010" => 
@@ -228,33 +243,40 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				end if;
 		
 				ar_log<='1';
+				valid <='1';
 				
 			--NOT
 			when "010011" =>
 				result := '0' & (not op2_1);
 				ar_log<='1';
+				valid <='1';
 				
 			--Pomeracke instrukcije		
 			--SHL
 			when "011000" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) sll to_integer(unsigned(op2_1)));
 				ar_log<='1';
+				valid <='1';
 			--SHR
 			when "011001" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) srl to_integer(unsigned(op2_1)));
 				ar_log<='1';
+				valid <='1';
 			--SAR
 			when "011010" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) sra to_integer(unsigned(op2_1)));
 				ar_log<='1';
+				valid <='1';
 			--ROL
 			when "011011" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) rol to_integer(unsigned(op2_1)));
 				ar_log<='1';
+				valid <='1';
 				--ROR
 			when "011100" =>
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) ror to_integer(unsigned(op2_1)));
 				ar_log<='1';
+				valid <='1';
 			
 			when others =>
 				null;
@@ -266,10 +288,17 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			rd_adr_out <= rd_adr;
 			opcode_out <= opcode;
 			
+			
 		else
 			data_alu_out <= (others => 'Z');
 			psw_alu_out <= (others => 'Z');
+			rd_adr_out <= (others => 'Z');
+			opcode_out  <= (others => 'Z');
+			st_value <= (others => 'Z');
 		end if;
 	
 	end process;
+	
+	enable<= '0' when flush_id='1' else '1';
+	
 end architecture;

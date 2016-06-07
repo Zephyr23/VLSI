@@ -21,14 +21,25 @@ entity Decode is
 		instr_from_if:in std_logic_vector((instr_length-1) downto 0);
 		instr_out:out std_logic_vector((instr_length-1) downto 0);
 		
+		stall: in std_logic;
+		flush_out: out std_logic;
+		flush_if: in std_logic;
+		flush: in std_logic;
+		
 		wr: in std_logic;
 		psw_wr: in std_logic;
 		wr_adr: in std_logic_vector((reg_adr_length-1) downto 0); --adresa registra za upis u regfile
 		wr_data: in std_logic_vector((reg_data_length-1) downto 0);
 		psw_in: in std_logic_vector((reg_data_length-1) downto 0);
-		op1_data: out std_logic_vector((reg_data_length-1) downto 0);
-		op2_data: out std_logic_vector((reg_data_length-1) downto 0);
+		rs1_data: out std_logic_vector((reg_data_length-1) downto 0);
+		rs2_data: out std_logic_vector((reg_data_length-1) downto 0);
 		psw_out: out std_logic_vector((reg_data_length-1) downto 0);
+		
+		
+		forward_rs1: in std_logic;
+		forward_rs2: in std_logic;
+		fwd_rs1_value: in std_logic_vector(31 downto 0);
+		fwd_rs2_value: in std_logic_vector(31 downto 0);
 		
 		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
 		rd_adr: out std_logic_vector(4 downto 0);
@@ -42,6 +53,7 @@ architecture impl of Decode is
 	
 	signal op1_adr, op2_adr : std_logic_vector((reg_adr_length-1) downto 0);
 	signal psw_rd : std_logic;
+	signal op1_data, op2_data : std_logic_vector(31 downto 0);
 	
 begin
 
@@ -69,9 +81,19 @@ begin
 	begin
 		
 		if (rising_edge(clk)) then
+		
+		if(stall='1' or flush='1' or flush_if='1') then
+		flush_out<='1';
+		else
+		flush_out<='0';
+		end if;
+		
 		opcode := instr_from_if((instr_length-1) downto (instr_length-opcode_length));
 		instr_out <= instr_from_if;
 		opcode_out <= opcode;
+		op1_adr <= (others=> 'Z');
+		op2_adr <=	(others=> 'Z');
+		rd_adr <=	(others=> 'Z');
 			if (opcode = "000000") then -- load
 				op1_adr <= instr_from_if (20 downto 16);
 				rd_adr <= instr_from_if (25 downto 21);
@@ -124,6 +146,7 @@ begin
 	
 	end process;
 	
-	
+	rs1_data <= fwd_rs1_value when forward_rs1 = '1' else op1_data;
+	rs2_data <= fwd_rs2_value when forward_rs2 = '1' else op2_data;
 	
 end impl;
