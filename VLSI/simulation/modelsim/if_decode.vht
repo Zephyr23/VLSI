@@ -8,19 +8,11 @@ ARCHITECTURE if_decode_arch OF if_decode_vhd_tst IS
 -- constants                                                 
 -- signals                                                   
 SIGNAL clk : STD_LOGIC;
-SIGNAL data_alu_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL instr_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL psw_alu_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL reset : STD_LOGIC;
-SIGNAL st_value : STD_LOGIC_VECTOR(31 DOWNTO 0);
 COMPONENT if_decode
 	PORT (
 	clk : IN STD_LOGIC;
-	data_alu_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	instr_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	psw_alu_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	reset : IN STD_LOGIC;
-	st_value : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	reset : IN STD_LOGIC
 	);
 END COMPONENT;
 BEGIN
@@ -28,11 +20,7 @@ BEGIN
 	PORT MAP (
 -- list connections between master ports and signals
 	clk => clk,
-	data_alu_out => data_alu_out,
-	instr_out => instr_out,
-	psw_alu_out => psw_alu_out,
-	reset => reset,
-	st_value => st_value
+	reset => reset
 	);
 init : PROCESS   --proces koji generise signal takta                                            
 	variable clk_next : std_logic := '1';

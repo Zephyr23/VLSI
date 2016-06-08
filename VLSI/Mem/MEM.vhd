@@ -35,7 +35,6 @@ generic(
 	
 	-- instrukcija
 	instr : in std_logic_vector((address_length - 1) downto 0);
-	data_to_wb : out std_logic_vector((data_length - 1) downto 0); -- vrednost koja se upisuje u regfile u wb fazi
 	instr_out : out std_logic_vector((address_length - 1) downto 0); -- instrukcija ka wb fazi
 	
 		addr_bus: out std_logic_vector(31 downto 0); --adresa ka data kesu

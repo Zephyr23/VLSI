@@ -22,13 +22,11 @@ generic(
 		reg_data : out std_logic_vector (data_length-1 downto 0); -- vrednost koja se upisuje u registar
 		reg_addr : out std_logic_vector (reg_adr_length-1 downto 0); --adresa registra (uzima se iz instrukcije)
 		
-		data_from_cache: in std_logic_vector((data_length - 1) downto 0);
+--		data_from_cache: in std_logic_vector((data_length - 1) downto 0);
 		data_from_mem : in std_logic_vector((data_length - 1) downto 0); -- vrednost koja se upisuje u regfile u wb fazi
-		instr_in : in std_logic_vector((address_length - 1) downto 0); -- instrukcija ka wb fazi
 		
 		rd_reg : in std_logic_vector(31 downto 0);
 		rd_adr: in std_logic_vector(4 downto 0);
-		reg_wr : in std_logic; -- signal za instr koja upisuje u regfile
 		
 		flush_mem: in std_logic;
 		
@@ -50,7 +48,7 @@ begin
 	end if;
 	
 	if(load = '1' and flush_mem='0')then --ukoliko je load radi se upis sadrzaja registra Rd u regfile
-		reg_data <= data_from_cache;
+		reg_data <= rd_reg;
 		reg_addr <= rd_adr;
 		wr<='1';
 	end if;

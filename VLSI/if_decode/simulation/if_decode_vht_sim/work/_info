@@ -4,22 +4,22 @@ K3
 cModel Technology
 dC:\Users\Lela\Desktop\VHDL projekat 4.5.2016\if_decode\simulation
 Edatacache
-Z0 w1464966935
+Z0 w1465189986
 Z1 DPx4 work 8 instrset 0 22 3eBTMDfoHn590ha^]Xdhk0
 Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
-Z5 dC:\Users\Lela\Desktop\VHDL projekat 4.6.2016\if_decode\simulation\if_decode_vht_sim
-Z6 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/DataCache/DataCache.vhd
-Z7 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/DataCache/DataCache.vhd
+Z5 dC:\Users\Nenad\Desktop\vlsi-master\VLSI\if_decode\simulation\if_decode_vht_sim
+Z6 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/DataCache/DataCache.vhd
+Z7 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/DataCache/DataCache.vhd
 l0
 L8
 VH:?@1DF4YCY3P8diC35PW3
 Z8 OV;C;10.1d;51
 32
-Z9 !s108 1465217331.651000
-Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/DataCache/DataCache.vhd|
-Z11 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/DataCache/DataCache.vhd|
+Z9 !s108 1465396843.625000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/DataCache/DataCache.vhd|
+Z11 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/DataCache/DataCache.vhd|
 Z12 o-work work -2002 -explicit -O0
 Z13 tExplicit 1
 !s100 CiEIA]XnZEQQhYhE`Q_]F1
@@ -29,7 +29,7 @@ R1
 R2
 R3
 R4
-DEx4 work 9 datacache 0 22 H:?@1DF4YCY3P8diC35PW3
+Z14 DEx4 work 9 datacache 0 22 H:?@1DF4YCY3P8diC35PW3
 l98
 L32
 V19fS60f]ABD01IU?@;Oaa3
@@ -43,131 +43,175 @@ R13
 !s100 a`2P1FIl@[V5b:L[NK7eS0
 !i10b 1
 Edecode
-Z14 w1465051726
+Z15 w1465394888
 R1
 R2
 R3
 R4
 R5
-Z15 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Decode/Decode.vhd
-Z16 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Decode/Decode.vhd
+Z16 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/Decode/Decode.vhd
+Z17 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/Decode/Decode.vhd
 l0
 L6
-V1mh5z8eLBPFaE`FQkBVEF0
+VMi<K@lY<m0c=kY5=z:MXA2
 R8
 32
-Z17 !s108 1465217331.257000
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Decode/Decode.vhd|
-Z19 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Decode/Decode.vhd|
+Z18 !s108 1465396844.305000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/Decode/Decode.vhd|
+Z20 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/Decode/Decode.vhd|
 R12
 R13
-!s100 9SnC@[18iKL6b2nGj`o:62
+!s100 AEgM;Ka<Qn0L6A[C5<m8K1
 !i10b 1
 Aimpl
-Z20 DEx4 work 7 regfile 0 22 3Nz<WYdfmLhiX5?[F<:aL2
+Z21 DEx4 work 7 regfile 0 22 3Nz<WYdfmLhiX5?[F<:aL2
 R1
 R2
 R3
 R4
-Z21 DEx4 work 6 decode 0 22 1mh5z8eLBPFaE`FQkBVEF0
-l43
-L36
-VZ8B7mBag`dZW7fhH3@`GS1
+Z22 DEx4 work 6 decode 0 22 Mi<K@lY<m0c=kY5=z:MXA2
+l59
+L53
+VM8nz:HS6]3HUB998=lFSi3
 R8
 32
-R17
 R18
 R19
+R20
 R12
 R13
-!s100 k7iC2i<B^OdSYlYc<7_:@3
+!s100 MNjBcHM]3fdlPb1P==Ji73
 !i10b 1
 Eexe
-Z22 w1464696604
+Z23 w1465319759
 R2
 R3
 R4
 R5
-Z23 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd
-Z24 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd
+8C:/Users/Nenad/Desktop/vlsi-master/VLSI/EX/EX.vhd
+FC:/Users/Nenad/Desktop/vlsi-master/VLSI/EX/EX.vhd
 l0
 L5
-VflX7=:Dk^YgL2JZ72iKOf1
+V;7;N8>0FXJFCHcZ7YBb0L3
 R8
 32
-Z25 !s108 1465217332.506000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd|
-Z27 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd|
 R12
 R13
-!s100 JfQjUNzd=Hz:S6F6=dNPf0
+!s100 >Ji`Fjm^8OWhmB^6iP1U20
 !i10b 1
+!s108 1465396844.862000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/EX/EX.vhd|
+!s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/EX/EX.vhd|
 Artl
 R2
 R3
 R4
-Z28 DEx4 work 3 exe 0 22 flX7=:Dk^YgL2JZ72iKOf1
+DEx4 work 3 exe 0 22 flX7=:Dk^YgL2JZ72iKOf1
 l46
 L41
 V`?ML0LiIc_^m@?`V>=afl1
 R8
 32
-R25
-R26
-R27
 R12
 R13
+Z24 dC:\Users\Lela\Desktop\VHDL projekat 4.6.2016\if_decode\simulation\if_decode_vht_sim
+FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd
+8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd
+!s108 1465217332.506000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd|
+!s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/EX/EX.vhd|
 !s100 WO;JFV<TNXR7jXo3?AK2W3
 !i10b 1
-Eif_decode
-Z29 w1464696817
+Eforward
+Z25 w1465310224
 R2
 R3
 R4
 R5
-Z30 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/if_decode/if_decode.vhd
-Z31 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/if_decode/if_decode.vhd
+Z26 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/Forward/forward.vhd
+Z27 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/Forward/forward.vhd
 l0
-L6
-VROW;9SlEF8;4VD3=PWzE42
+L5
+V39JgbekGSc9;ePMHANWLo1
 R8
 32
-Z32 !s108 1465217333.189000
-Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/if_decode/if_decode.vhd|
-Z34 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/if_decode/if_decode.vhd|
+Z28 !s108 1465396841.576000
+Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/Forward/forward.vhd|
+Z30 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/Forward/forward.vhd|
 R12
 R13
-!s100 @G9iW`Kz_`IMb99<EPACB3
+!s100 Q`PdaY;]B3G]Ymzn2`l<31
 !i10b 1
 Artl
-R28
-Z35 DEx4 work 10 instrcache 0 22 PW7:M9?h]BN`YV;CiHOhf3
-R1
-R21
-Z36 DEx4 work 11 if_jedinica 0 22 b9fFnT<BXTP@9]T>e;QjI1
 R2
 R3
 R4
-DEx4 work 9 if_decode 0 22 ROW;9SlEF8;4VD3=PWzE42
-l63
-L40
-VQbW8APWP]FJ]`mJ>MaI9g2
-!s100 Pc:960i[ig4BFG_4BCjD=1
+Z31 DEx4 work 7 forward 0 22 39JgbekGSc9;ePMHANWLo1
+l42
+L39
+Vo=m>J_h8PYLTjkh`67bk`0
 R8
 32
-R32
-R33
-R34
+R28
+R29
+R30
 R12
 R13
+!s100 j`]5z`KD5YCzzPZ?JYEk_2
 !i10b 1
-Eif_decode_vhd_tst
-Z37 w1465044576
+Eif_decode
+Z32 w1465394476
+R2
 R3
 R4
 R5
-Z38 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/simulation/modelsim/if_decode.vht
-Z39 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/simulation/modelsim/if_decode.vht
+Z33 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/if_decode/if_decode.vhd
+Z34 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/if_decode/if_decode.vhd
+l0
+L6
+VL[z=M4[caiQ70L7hXWBUV1
+R8
+32
+Z35 !s108 1465396847.046000
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/if_decode/if_decode.vhd|
+Z37 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/if_decode/if_decode.vhd|
+R12
+R13
+!s100 I62nCl?DFnUz;XDclaj6^0
+!i10b 1
+Artl
+R31
+R14
+Z38 DEx4 work 2 wb 0 22 7?9:ijd1<RVJMJ2Mmo02N1
+Z39 DEx4 work 3 mem 0 22 `^Tf`7RS713YSAmEXRUW90
+DEx4 work 3 exe 0 22 ;7;N8>0FXJFCHcZ7YBb0L3
+Z40 DEx4 work 10 instrcache 0 22 PW7:M9?h]BN`YV;CiHOhf3
+R1
+R22
+Z41 DEx4 work 11 if_jedinica 0 22 cj^C<Z_:1E`SRNbAK8;kD0
+R2
+R3
+R4
+DEx4 work 9 if_decode 0 22 L[z=M4[caiQ70L7hXWBUV1
+l101
+L29
+V>jTk=geg?eFLHnHc<mBO22
+R8
+32
+R35
+R36
+R37
+R12
+R13
+!s100 8GKkOU:VhoT4CzmWd_eii1
+!i10b 1
+Eif_decode_vhd_tst
+Z42 w1465396108
+R3
+R4
+R5
+Z43 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/simulation/modelsim/if_decode.vht
+Z44 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/simulation/modelsim/if_decode.vht
 l0
 L5
 V@V@W4TVnVS[MieJF]bn`:0
@@ -175,81 +219,81 @@ V@V@W4TVnVS[MieJF]bn`:0
 R8
 32
 !i10b 1
-Z40 !s108 1465217333.726000
-Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/simulation/modelsim/if_decode.vht|
-Z42 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/simulation/modelsim/if_decode.vht|
+Z45 !s108 1465396847.638000
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/simulation/modelsim/if_decode.vht|
+Z47 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/simulation/modelsim/if_decode.vht|
 R12
 R13
 Aif_decode_arch
 R3
 R4
-Z43 DEx4 work 17 if_decode_vhd_tst 0 22 @V@W4TVnVS[MieJF]bn`:0
-l26
+Z48 DEx4 work 17 if_decode_vhd_tst 0 22 @V@W4TVnVS[MieJF]bn`:0
+l18
 L7
-Z44 V<eBkHi^@B9AEl_:C7^>R42
-Z45 !s100 2S@2A2ojFzAZ14`?6Mk191
+V4YO:@I@C6bmf2a6;k`;zn0
+!s100 Rj2AD<K<2JG@5=3C<XMm>0
 R8
 32
 !i10b 1
-R40
-R41
-R42
+R45
+R46
+R47
 R12
 R13
 Eif_jedinica
-Z46 w1465045480
+Z49 w1465316006
 R2
 R3
 R4
 R5
-Z47 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/IF/if.vhd
-Z48 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/IF/if.vhd
+Z50 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/IF/if.vhd
+Z51 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/IF/if.vhd
 l0
 L5
-Vb9fFnT<BXTP@9]T>e;QjI1
+Vcj^C<Z_:1E`SRNbAK8;kD0
 R8
 32
-Z49 !s108 1465217330.734000
-Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/IF/if.vhd|
-Z51 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/IF/if.vhd|
+Z52 !s108 1465396845.360000
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/IF/if.vhd|
+Z54 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/IF/if.vhd|
 R12
 R13
-!s100 cMJ1bJ]F5g:5QF>QfAgmI2
+!s100 <mY02g[A2>[PTn7>?>:JP2
 !i10b 1
 Aimpl
 R2
 R3
 R4
-R36
-l31
-L27
-VZjbV4hU<F3JVjY8UF2:aK1
+R41
+l34
+L30
+Ve8dli=O6]YE1DjLcH:8CE3
 R8
 32
-R49
-R50
-R51
+R52
+R53
+R54
 R12
 R13
-!s100 YOYiNm`[0QSlHKDz<W4c`0
+!s100 gkJNDAZNIMjC]TCi>hY6A1
 !i10b 1
 Einstrcache
-Z52 w1465043285
+Z55 w1465189986
 R1
 R2
 R3
 R4
 R5
-Z53 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstructionCache/InstructionCache.vhd
-Z54 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstructionCache/InstructionCache.vhd
+Z56 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstructionCache/InstructionCache.vhd
+Z57 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/InstructionCache/InstructionCache.vhd
 l0
 L7
 VPW7:M9?h]BN`YV;CiHOhf3
 R8
 32
-Z55 !s108 1465217332.078000
-Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstructionCache/InstructionCache.vhd|
-Z57 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstructionCache/InstructionCache.vhd|
+Z58 !s108 1465396846.432000
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstructionCache/InstructionCache.vhd|
+Z60 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstructionCache/InstructionCache.vhd|
 R12
 R13
 !s100 TnXe50d6Q9komHfGn_Gnj3
@@ -259,15 +303,15 @@ R1
 R2
 R3
 R4
-R35
+R40
 l87
 L27
 V^^NH7n76@XkH@jc8[c;i`0
 R8
 32
-R55
-R56
-R57
+R58
+R59
+R60
 R12
 R13
 !s100 ?hjc`JH<HcjjZT<`9mA:J0
@@ -276,19 +320,19 @@ Pinstrset
 R2
 R3
 R4
-Z58 w1462450494
+R55
 R5
-Z59 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstrConst/InstrCosnt.vhd
-Z60 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstrConst/InstrCosnt.vhd
+Z61 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstrConst/InstrCosnt.vhd
+Z62 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/InstrConst/InstrCosnt.vhd
 l0
 L6
 V3eBTMDfoHn590ha^]Xdhk0
 R8
 32
 b1
-Z61 !s108 1465217329.758000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstrConst/InstrCosnt.vhd|
-Z63 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/InstrConst/InstrCosnt.vhd|
+Z63 !s108 1465396845.892000
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstrConst/InstrCosnt.vhd|
+Z65 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/InstrConst/InstrCosnt.vhd|
 R12
 R13
 !s100 3_0gAg;2TB;KWQTLOa82l2
@@ -303,30 +347,67 @@ L61
 VRSQGiT>4hnef<`f_O>nC^0
 R8
 32
-R61
-R62
 R63
+R64
+R65
 R12
 R13
 nbody
 !s100 U:GL8zLaJ=>g;50TNgEY@2
 !i10b 1
-Eregfile
-Z64 w1464018730
+Emem
+Z66 w1465392105
 R2
 R3
 R4
 R5
-Z65 8C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Regfile/Regfile.vhd
-Z66 FC:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Regfile/Regfile.vhd
+Z67 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/Mem/MEM.vhd
+Z68 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/Mem/MEM.vhd
+l0
+L5
+V`^Tf`7RS713YSAmEXRUW90
+R8
+32
+Z69 !s108 1465396842.304000
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/Mem/MEM.vhd|
+Z71 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/Mem/MEM.vhd|
+R12
+R13
+!s100 AXogoCzz=98a^8mBWTI=b3
+!i10b 1
+Artl
+R2
+R3
+R4
+R39
+l56
+L54
+VchdggZigTlcN987`@9AT[2
+R8
+32
+R69
+R70
+R71
+R12
+R13
+!s100 B[ZOiPO@ioVgck00TRH@73
+!i10b 1
+Eregfile
+R55
+R2
+R3
+R4
+R5
+Z72 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/Regfile/Regfile.vhd
+Z73 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/Regfile/Regfile.vhd
 l0
 L5
 V3Nz<WYdfmLhiX5?[F<:aL2
 R8
 32
-Z67 !s108 1465217330.146000
-Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Regfile/Regfile.vhd|
-Z69 !s107 C:/Users/Lela/Desktop/VHDL projekat 4.6.2016/Regfile/Regfile.vhd|
+Z74 !s108 1465396840.661000
+Z75 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/Regfile/Regfile.vhd|
+Z76 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/Regfile/Regfile.vhd|
 R12
 R13
 !s100 SoS1fbm_zbhDBCdU;:Y_k1
@@ -335,16 +416,53 @@ Artl
 R2
 R3
 R4
-R20
+R21
 l42
 L37
 VZNhU[]NZQ8E<>FeHIAa]B2
 R8
 32
-R67
-R68
-R69
+R74
+R75
+R76
 R12
 R13
 !s100 C_F;b5e1Pg?gYdQEE>K@F1
+!i10b 1
+Ewb
+Z77 w1465393344
+R2
+R3
+R4
+R5
+Z78 8C:/Users/Nenad/Desktop/vlsi-master/VLSI/WB/WB.vhd
+Z79 FC:/Users/Nenad/Desktop/vlsi-master/VLSI/WB/WB.vhd
+l0
+L5
+V7?9:ijd1<RVJMJ2Mmo02N1
+R8
+32
+Z80 !s108 1465396842.991000
+Z81 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Nenad/Desktop/vlsi-master/VLSI/WB/WB.vhd|
+Z82 !s107 C:/Users/Nenad/Desktop/vlsi-master/VLSI/WB/WB.vhd|
+R12
+R13
+!s100 EY82lj>>Y;8:6SMY6lz?Z0
+!i10b 1
+Artl
+R2
+R3
+R4
+R38
+l40
+L39
+V>V9KamV9GLz1`no@]akDS1
+R8
+32
+R80
+R81
+R82
+R12
+R13
+!s100 <dogl`66C6KdccbN2Y]CA2
 !i10b 1

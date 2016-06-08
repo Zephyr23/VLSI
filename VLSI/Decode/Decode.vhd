@@ -43,15 +43,16 @@ entity Decode is
 		
 		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
 		rd_adr: out std_logic_vector(4 downto 0);
-		imm_value : out std_logic_vector (15 downto 0)
-		
+		imm_value : out std_logic_vector (15 downto 0);
+		rs1_adr : out std_logic_vector((reg_adr_length-1) downto 0);
+		rs2_adr : out std_logic_vector((reg_adr_length-1) downto 0)
 	);
 end Decode;
 
 
 architecture impl of Decode is
-	
 	signal op1_adr, op2_adr : std_logic_vector((reg_adr_length-1) downto 0);
+	
 	signal psw_rd : std_logic;
 	signal op1_data, op2_data : std_logic_vector(31 downto 0);
 	
@@ -145,7 +146,8 @@ begin
 		end if;
 	
 	end process;
-	
+	rs1_adr <= op1_adr;
+	rs2_adr <= op2_adr;
 	rs1_data <= fwd_rs1_value when forward_rs1 = '1' else op1_data;
 	rs2_data <= fwd_rs2_value when forward_rs2 = '1' else op2_data;
 	
