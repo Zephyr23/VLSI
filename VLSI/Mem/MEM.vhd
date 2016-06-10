@@ -58,35 +58,32 @@ begin
 	process (clk) is
 --	variable load_pom: std_logic_vector(31 downto 0);
 	begin
-	if (opcode="000001" and flush_ex='0')then --ako je store
-	
-		addr_bus<=data_from_alu; --adresa gde treba da se smesti rec iz reg Rs2 (instr(15..11))
-		data_bus_out<=st_value; --saljem u mem
-		wr<='1';
+	if(rising_edge(clk)) then
+		if (opcode="000001" and flush_ex='0')then --ako je store
+			addr_bus<=data_from_alu; --adresa gde treba da se smesti rec iz reg Rs2 (instr(15..11))
+			data_bus_out<=st_value; --saljem u mem
+			wr<='1';
 		else
-		wr<='0';
+			wr<='0';
 		end if;
 		
-	if(opcode="000000" and flush_ex='0' )then -- load 
-	
-		addr_bus<=data_from_alu; -- adresa odakle se dohvata rec i smesta u reg Rd(instr(25..21))
-	--	load_pom :=data_bus_in;  --uzimam iz mem
-		rd<='1';
+		if(opcode="000000" and flush_ex='0' )then -- load 
+			addr_bus<=data_from_alu; -- adresa odakle se dohvata rec i smesta u reg Rd(instr(25..21))
+		--	load_pom :=data_bus_in;  --uzimam iz mem
+			rd<='1';
 		else
-		rd<='0';
+			rd<='0';
 		end if;
 	
-	flush_out<=flush_ex;
-	
-	data_alu_out <= data_from_alu;
-	instr_out <= instr;
---	rd_reg <=load_pom;
-	rd_adr_out <= rd_adr;
-	opcode_out <= opcode;
-	
-	ar_log_out <= ar_log;
-	load_out <= load;
-	--test
+		flush_out<=flush_ex;
+		data_alu_out <= data_from_alu;
+	--	instr_out <= instr;
+	--	rd_reg <=load_pom;
+		rd_adr_out <= rd_adr;
+		opcode_out <= opcode;
+		ar_log_out <= ar_log;
+		load_out <= load;
+	end if;
 	end process;
 	rd_reg <=data_bus_in;
 	end architecture;

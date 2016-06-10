@@ -49,7 +49,7 @@ architecture rtl of if_decode is
 
 	signal instr_decode_exe : std_logic_vector(31 downto 0);
 	
-	signal opcode : std_logic_vector((opcode_length-1) downto 0);--out iz decode
+	signal opcode_s : std_logic_vector((opcode_length-1) downto 0);--out iz decode
 	signal rd_adr : std_logic_vector(4 downto 0);--out iz decode
 	signal imm_value : std_logic_vector (15 downto 0);--out iz decode
 	
@@ -110,7 +110,7 @@ begin
 	port map (
 		clk,reset,pc_out,instr_IF_decode,instr_decode_exe,stall_id,flush_id_exe,flush_if_decode,flush_id,
 		wr,psw_wr,wr_adr,wr_data,psw_in,rs1_data,rs2_data,psw_out_decode,forward_rs1,
-		forward_rs2,fwd_rs1_value,fwd_rs2_value,opcode,rd_adr,imm_value,rs1_adr,rs2_adr
+		forward_rs2,fwd_rs1_value,fwd_rs2_value,opcode_s,rd_adr,imm_value,rs1_adr,rs2_adr
 	);
 	
 	instr_cache: entity work.InstrCache(ins_cache_impl)
@@ -121,7 +121,7 @@ begin
 	exe_jedinica: entity work.Exe(rtl)
 	port map (
 		clk,rs1_data,rs2_data,st_value,instr_decode_exe,
-		opcode,opcode_ex,rd_adr,rd_adr_ex,imm_value,
+		opcode_s,opcode_ex,rd_adr,rd_adr_ex,imm_value,
 		psw_out_decode,data_alu_out,psw_alu_out,instr_out,flush_ex,flush_id_exe,
 		ar_log,brnch,load,valid
 	);

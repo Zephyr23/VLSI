@@ -37,7 +37,7 @@ begin
 	begin 
 	
 		if (reset = '1') then
-			pc<= initial_PC;
+			--pc<= initial_PC;
 			pc_next<= initial_PC;
 			ird<= '0';
 		elsif (rising_edge(clk)) then
@@ -46,13 +46,13 @@ begin
 			pc_next <= std_logic_vector(unsigned(pc_next) + 1);
 			end if;
 			ird<='1';
+			pc_out <= pc;
+			flush_out <=flush;
 		end if;
 	
 	end process;
-
-	IF_addr <= pc;
-	pc_out <= pc;
 	instr_to_decode<=instr;
-	flush_out <=flush;
+	IF_addr <= pc;
+	
 	
 end impl;

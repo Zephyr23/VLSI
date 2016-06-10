@@ -27,8 +27,8 @@ entity Regfile is
 		
 		
 		-- Output ports
-		op1_data	:	out	std_logic_vector((reg_data_length-1) downto 0);
-		op2_data	:	out	std_logic_vector((reg_data_length-1) downto 0);
+		op1_data	:	out	std_logic_vector((reg_data_length-1) downto 0) := (others => 'Z');
+		op2_data	:	out	std_logic_vector((reg_data_length-1) downto 0) := (others => 'Z');
 		psw_out	:	out	std_logic_vector((reg_data_length-1) downto 0)
 	);
 end Regfile;
@@ -42,22 +42,36 @@ signal psw : std_logic_vector((reg_data_length - 1) downto 0);
 begin
 
 
-	process (reset, wr, psw_wr)
+	process (reset, wr, psw_wr, op1_rd_adr, op2_rd_adr)
 	
 	begin
 		
 		if (reset = '1') then
 			for i in 0 to (2**reg_adr_length - 1) loop
-				registers(i) <= (others => '0');				
+				registers(i) <= (others => '0');
 			end loop;
 			psw <= (others => '0');
+			op1_data <= (others => 'Z');
+			op2_data <= (others => 'Z');
 		else
-			if (rising_edge(psw_wr)) then
+			if (psw_wr = '1') then
 				psw <= psw_in;
 			end if;
 		
-			if (rising_edge(wr)) then
+			if (wr = '1') then
 				registers(to_integer(unsigned(wr_adr))) <= wr_data;
+			end if;
+			if (rd = '1') then
+				if(op1_rd_adr = "ZZZZZ") then
+					op1_data <= (others => 'Z');
+				else
+					op1_data <= registers(to_integer(unsigned(op1_rd_adr)));
+				end if;
+				if(op2_rd_adr = "ZZZZZ") then
+					op2_data <= (others => 'Z');
+				else
+					op2_data <= registers(to_integer(unsigned(op2_rd_adr)));
+				end if;
 			end if;
 		end if;
 		
@@ -65,8 +79,7 @@ begin
 	end process;
 	
 	
-	op1_data <= registers(to_integer(unsigned(op1_rd_adr)));
-	op2_data <= registers(to_integer(unsigned(op2_rd_adr)));
+	
 	
 	
 	psw_out <= psw when psw_rd = '1' else (others => 'Z');

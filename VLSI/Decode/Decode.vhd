@@ -80,8 +80,13 @@ begin
 	process(clk, reset) is
 		variable opcode : std_logic_vector (5 downto 0);
 	begin
-		
-		if (rising_edge(clk)) then
+		if (reset = '1') then
+			op1_adr <= (others=> 'Z');
+			op2_adr <= (others=> 'Z');
+			rd_adr <= (others=> 'Z');
+			rs1_adr <= (others=> 'Z');
+			rs2_adr <= (others=> 'Z');
+		elsif (rising_edge(clk)) then
 		
 		if(stall='1' or flush='1' or flush_if='1') then
 		flush_out<='1';
@@ -143,12 +148,23 @@ begin
 			end if;
 			
 			--rts nema prosledjivanje vrednosti registra
+			rs1_adr <= op1_adr;
+			rs2_adr <= op2_adr;
+			if (forward_rs1 = '1') then
+				rs1_data <= fwd_rs1_value;
+			else
+				rs1_data <= op1_data;
+			end if;
+			if (forward_rs2 = '1') then
+				rs2_data <= fwd_rs2_value;
+			else
+				rs2_data <= op2_data;
+			end if;
 		end if;
 	
 	end process;
-	rs1_adr <= op1_adr;
-	rs2_adr <= op2_adr;
-	rs1_data <= fwd_rs1_value when forward_rs1 = '1' else op1_data;
-	rs2_data <= fwd_rs2_value when forward_rs2 = '1' else op2_data;
+	
+--	rs1_data <= fwd_rs1_value when forward_rs1 = '1' else op1_data;
+--	rs2_data <= fwd_rs2_value when forward_rs2 = '1' else op2_data;
 	
 end impl;

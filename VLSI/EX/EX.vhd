@@ -26,7 +26,7 @@ port(
 	-- instrukcija
 	instr : in std_logic_vector((address_length - 1) downto 0);
 	
-		opcode : in std_logic_vector((opcode_length-1) downto 0);
+		opcode_in : in std_logic_vector(5 downto 0);
 		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
 	
 		rd_adr: in std_logic_vector(4 downto 0);
@@ -59,14 +59,15 @@ architecture rtl of Exe is
 constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0');
 	constant zero_mask : std_logic_vector((data_length - 1) downto 0) := (others => '1');
 	signal enable: std_logic;
-	
+	--signal opcode : std_logic_vector(5 downto 0);
 	begin 
-	process(enable, opcode, op1_1, op2_1, psw_in)
+	process(clk)
 		variable result : std_logic_vector(data_length downto 0);
 		variable psw : std_logic_vector((data_length - 1) downto 0);
 		
 	begin
 	
+	--opcode <= opcode_in;
 	flush_out<=flush_id;
 	ar_log<='0';
 	load<='0';
@@ -76,7 +77,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			result := (others => 'Z');
 			psw := psw_in;
 		
-			case opcode is
+			case opcode_in is
 			
 			--LOAD
 			when "000000" => 
@@ -286,7 +287,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			psw_alu_out <= psw;
 			st_value <= op2_1;
 			rd_adr_out <= rd_adr;
-			opcode_out <= opcode;
+			opcode_out <= opcode_in;
 			
 			
 		else

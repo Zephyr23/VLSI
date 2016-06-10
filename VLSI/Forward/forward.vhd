@@ -24,8 +24,8 @@ entity Forward is
 		fwd_rs1_value: out std_logic_vector(31 downto 0);
 		fwd_rs2_value: out std_logic_vector(31 downto 0);
 		
-		stall_if: out std_logic;
-		stall_id: out std_logic;
+		stall_if: out std_logic := '0';
+		stall_id: out std_logic := '0';
 		
 		valid:  in std_logic
 		
@@ -51,27 +51,27 @@ begin
 		fwd_rs1_value <= (others => 'Z');
 		fwd_rs2_value <= (others => 'Z');
 		
-		if(rd_adr_wb=rs1_adr) then 
+		if(rd_adr_wb=rs1_adr and not rd_adr_wb="ZZZZZ"and not rs1_adr="ZZZZZ") then 
 			fwd_rs1 <= '1';
 			fwd_rs1_value <= rd_wb;
 		end if;
 		
-		if(rd_adr_wb=rs2_adr) then 
+		if(rd_adr_wb=rs2_adr and not rd_adr_wb="ZZZZZ"and not rs2_adr="ZZZZZ") then 
 			fwd_rs2 <= '1';
 			fwd_rs2_value <= rd_wb;
 		end if;
 		
-		if(rd_adr_mem=rs1_adr) then 
+		if(rd_adr_mem=rs1_adr and not rd_adr_mem="ZZZZZ"and not rs1_adr="ZZZZZ") then 
 			fwd_rs1 <= '1';
 			fwd_rs1_value <= rd_mem;	
 		end if;
 		
-		if(rd_adr_mem=rs2_adr) then 
+		if(rd_adr_mem=rs2_adr and not rd_adr_mem="ZZZZZ"and not rs2_adr="ZZZZZ") then 
 			fwd_rs2 <= '1';
 			fwd_rs2_value <= rd_mem;
 		end if;
 		
-		if(rd_adr_ex=rs1_adr) then 
+		if(rd_adr_ex=rs1_adr and not rd_adr_ex="ZZZZZ"and not rs1_adr="ZZZZZ") then 
 			if (valid = '1') then
 				fwd_rs1 <= '1';
 				fwd_rs1_value <= rd_ex;
@@ -82,7 +82,7 @@ begin
 			end if;
 		end if;
 		
-		if(rd_adr_ex=rs2_adr) then 
+		if(rd_adr_ex=rs2_adr and not rd_adr_ex="ZZZZZ"and not rs2_adr="ZZZZZ") then 
 			if (valid = '1') then
 				fwd_rs2 <= '1';
 				fwd_rs2_value <= rd_ex;
