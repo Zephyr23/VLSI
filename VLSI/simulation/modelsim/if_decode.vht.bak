@@ -17,7 +17,7 @@
 -- suit user's needs .Comments are provided in each section to help the user  
 -- fill out necessary details.                                                
 -- ***************************************************************************
--- Generated on "05/25/2016 14:56:39"
+-- Generated on "06/10/2016 14:36:22"
                                                             
 -- Vhdl Test Bench template for design  :  if_decode
 -- 
@@ -33,18 +33,10 @@ ARCHITECTURE if_decode_arch OF if_decode_vhd_tst IS
 -- constants                                                 
 -- signals                                                   
 SIGNAL clk : STD_LOGIC;
-SIGNAL instr_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL op1_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL op2_data : STD_LOGIC_VECTOR(31 DOWNTO 0);
-SIGNAL psw_out : STD_LOGIC_VECTOR(31 DOWNTO 0);
 SIGNAL reset : STD_LOGIC;
 COMPONENT if_decode
 	PORT (
 	clk : IN STD_LOGIC;
-	instr_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	op1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	op2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	psw_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 	reset : IN STD_LOGIC
 	);
 END COMPONENT;
@@ -53,10 +45,6 @@ BEGIN
 	PORT MAP (
 -- list connections between master ports and signals
 	clk => clk,
-	instr_out => instr_out,
-	op1_data => op1_data,
-	op2_data => op2_data,
-	psw_out => psw_out,
 	reset => reset
 	);
 init : PROCESS                                               

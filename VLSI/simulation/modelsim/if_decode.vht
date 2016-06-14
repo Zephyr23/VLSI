@@ -1,4 +1,3 @@
-
 LIBRARY ieee;                                               
 USE ieee.std_logic_1164.all;                                
 
@@ -35,8 +34,8 @@ BEGIN
 		clk_next := not clk_next;
 		wait for 5 ns;
 	end loop;
-END PROCESS init;                                           
-always : PROCESS  --proces koji generise ulazne signale
+END PROCESS init; 
+always : PROCESS                                              
 -- optional sensitivity list                                  
 -- (        )                                                 
 -- variable declarations                                      

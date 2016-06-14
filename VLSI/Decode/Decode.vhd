@@ -18,8 +18,8 @@ entity Decode is
 		clk : in std_logic;
 		reset: in std_logic;
 		PC_addr: in std_logic_vector((addr_length-1) downto 0); --Vrednost PC dobijena iz if faze
-		instr_from_if:in std_logic_vector((instr_length-1) downto 0);
-		instr_out:out std_logic_vector((instr_length-1) downto 0);
+		instr_from_if:in std_logic_vector((instr_length-1) downto 0); -- instrukcija iz if-a
+		instr_out:out std_logic_vector((instr_length-1) downto 0); -- prosledjivanje instrukcije u sledecu fazu
 		
 		stall: in std_logic;
 		flush_out: out std_logic;
@@ -31,30 +31,41 @@ entity Decode is
 		wr_adr: in std_logic_vector((reg_adr_length-1) downto 0); --adresa registra za upis u regfile
 		wr_data: in std_logic_vector((reg_data_length-1) downto 0);
 		psw_in: in std_logic_vector((reg_data_length-1) downto 0);
-		rs1_data: out std_logic_vector((reg_data_length-1) downto 0);
-		rs2_data: out std_logic_vector((reg_data_length-1) downto 0);
+		rs1_data: out std_logic_vector((reg_data_length-1) downto 0); -- vrednost registra ka exe
+		rs2_data: out std_logic_vector((reg_data_length-1) downto 0); -- vrednost registra ka exe
+		
 		psw_out: out std_logic_vector((reg_data_length-1) downto 0);
 		
 		
-		forward_rs1: in std_logic;
-		forward_rs2: in std_logic;
-		fwd_rs1_value: in std_logic_vector(31 downto 0);
-		fwd_rs2_value: in std_logic_vector(31 downto 0);
+		forward_rs1_ex: in std_logic;
+		forward_rs1_mem: in std_logic;
+		forward_rs1_wb: in std_logic;
+		
+		fwd_value_ex: in std_logic_vector(31 downto 0);
+		fwd_value_mem: in std_logic_vector(31 downto 0);
+		fwd_value_wb: in std_logic_vector(31 downto 0);
+		
+		forward_rs2_ex: in std_logic;
+		forward_rs2_mem: in std_logic;
+		forward_rs2_wb: in std_logic;
 		
 		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
 		rd_adr: out std_logic_vector(4 downto 0);
-		imm_value : out std_logic_vector (15 downto 0);
-		rs1_adr : out std_logic_vector((reg_adr_length-1) downto 0);
-		rs2_adr : out std_logic_vector((reg_adr_length-1) downto 0)
+		imm_value_out : out std_logic_vector (15 downto 0);
+		op1_adr_out : out std_logic_vector((reg_adr_length-1) downto 0); -- adr registra -> forward 
+		op2_adr_out : out std_logic_vector((reg_adr_length-1) downto 0); -- adr registra -> forward 
+		op1_data: inout std_logic_vector((reg_data_length-1) downto 0); 
+		op2_data: inout std_logic_vector((reg_data_length-1) downto 0)
 	);
 end Decode;
 
 
 architecture impl of Decode is
 	signal op1_adr, op2_adr : std_logic_vector((reg_adr_length-1) downto 0);
-	
+	signal imm_value : std_logic_vector (15 downto 0);
 	signal psw_rd : std_logic;
-	signal op1_data, op2_data : std_logic_vector(31 downto 0);
+	signal flush_next : std_logic;
+	signal instr, instr_next : std_logic_vector((instr_length-1) downto 0);
 	
 begin
 
@@ -84,87 +95,104 @@ begin
 			op1_adr <= (others=> 'Z');
 			op2_adr <= (others=> 'Z');
 			rd_adr <= (others=> 'Z');
-			rs1_adr <= (others=> 'Z');
-			rs2_adr <= (others=> 'Z');
+			
 		elsif (rising_edge(clk)) then
 		
-		if(stall='1' or flush='1' or flush_if='1') then
-		flush_out<='1';
-		else
-		flush_out<='0';
-		end if;
-		
-		opcode := instr_from_if((instr_length-1) downto (instr_length-opcode_length));
-		instr_out <= instr_from_if;
-		opcode_out <= opcode;
-		op1_adr <= (others=> 'Z');
-		op2_adr <=	(others=> 'Z');
-		rd_adr <=	(others=> 'Z');
+			opcode := instr((instr_length-1) downto (instr_length-opcode_length));
+			instr_out <= instr;
+			opcode_out <= opcode;
+			op1_adr <= (others=> 'Z');
+			op2_adr <=	(others=> 'Z');
+			rd_adr <=	(others=> 'Z');
 			if (opcode = "000000") then -- load
-				op1_adr <= instr_from_if (20 downto 16);
-				rd_adr <= instr_from_if (25 downto 21);
-				imm_value <= instr_from_if (15 downto 0);
+				op1_adr <= instr (20 downto 16);
+				rd_adr <= instr (25 downto 21);
+				imm_value <= instr (15 downto 0);
 			end if;
 			if (opcode = "000001" or (opcode >= "101000" and opcode <= "101101")) then -- store, instrukcije uslovnog skoka
-				op1_adr <= instr_from_if (20 downto 16);
-				op2_adr <= instr_from_if (15 downto 11);
-				imm_value(15 downto 11) <= instr_from_if(25 downto 21);
-				imm_value(10 downto 0) <= instr_from_if( 10 downto 0);
+				op1_adr <= instr (20 downto 16);
+				op2_adr <= instr (15 downto 11);
+				imm_value(15 downto 11) <= instr(25 downto 21);
+				imm_value(10 downto 0) <= instr( 10 downto 0);
 			end if;
 			if (opcode = "000100") then -- mov
-				op1_adr <= instr_from_if (20 downto 16);
-				rd_adr <= instr_from_if (25 downto 21);
+				op1_adr <= instr (20 downto 16);
+				rd_adr <= instr (25 downto 21);
 			end if;
 			if (opcode = "000101") then -- movi
-				imm_value <= instr_from_if(15 downto 0);
-				rd_adr <= instr_from_if (25 downto 21);
+				imm_value <= instr(15 downto 0);
+				rd_adr <= instr (25 downto 21);
 			end if;
-			if (opcode = "001000" or opcode = "001001" or (opcode >= "010000" and opcode <= "010011")) then --add, sub, and, or, xor, not
-				op1_adr <= instr_from_if (20 downto 16);
-				op2_adr <= instr_from_if (15 downto 11);
-				rd_adr <= instr_from_if (25 downto 21);
+			if (opcode = "001000" or opcode = "001001" or (opcode >= "010000" and opcode <= "010010")) then --add, sub, and, or, xor
+				op1_adr <= instr (20 downto 16);
+				op2_adr <= instr (15 downto 11);
+				rd_adr <= instr (25 downto 21);
 			end if;
+			if (opcode = "010011") then --not
+				op1_adr <= instr (20 downto 16);
+				rd_adr <= instr (25 downto 21);
+			end if;
+			
 			if (opcode = "001100" or opcode = "001101") then --addi, subi
-				op1_adr <= instr_from_if (20 downto 16);
-				imm_value <= instr_from_if (15 downto 0);
-				rd_adr <= instr_from_if (25 downto 21);
+				op1_adr <= instr (20 downto 16);
+				imm_value <= instr (15 downto 0);
+				rd_adr <= instr (25 downto 21);
 			end if;
 			if (opcode >= "011000" and opcode <= "011100") then --pomeracke instrukcije
-				op1_adr <= instr_from_if (25 downto 21);
-				imm_value(4 downto 0) <= instr_from_if (15 downto 11);
+				op1_adr <= instr (25 downto 21);
+				imm_value(4 downto 0) <= instr (15 downto 11);
 				imm_value(15 downto 5)<= (others => '0');
-				rd_adr <= instr_from_if (25 downto 21);
+				rd_adr <= instr (25 downto 21);
 			end if;
 			if (opcode = "100000" or opcode = "100001") then --jmp, jsr
-				op1_adr <= instr_from_if(20 downto 16);
-				imm_value <= instr_from_if (15 downto 0);
+				op1_adr <= instr(20 downto 16);
+				imm_value <= instr (15 downto 0);
 			end if;
 			if (opcode = "100100") then --push
-				op1_adr <= instr_from_if (20 downto 16);
+				op1_adr <= instr (20 downto 16);
 			end if;
 			
 			if (opcode = "100101") then --pop
-				rd_adr <= instr_from_if (25 downto 21);
+				rd_adr <= instr (25 downto 21);
 			end if;
 			
+			if(stall='1') then
+				op1_adr <= op1_adr; 
+				op2_adr <= op2_adr;
+			end if;
+			
+			
 			--rts nema prosledjivanje vrednosti registra
-			rs1_adr <= op1_adr;
-			rs2_adr <= op2_adr;
-			if (forward_rs1 = '1') then
-				rs1_data <= fwd_rs1_value;
+		
+		
+		
+			if(flush='1' or flush_if='1') then
+				flush_next<='1';
 			else
-				rs1_data <= op1_data;
+				flush_next<='0';
 			end if;
-			if (forward_rs2 = '1') then
-				rs2_data <= fwd_rs2_value;
-			else
-				rs2_data <= op2_data;
-			end if;
+			
+			instr_next <= instr;
+		
 		end if;
 	
 	end process;
+	op1_adr_out <= op1_adr;
+	op2_adr_out <= op2_adr;
+	imm_value_out <= imm_value;
 	
---	rs1_data <= fwd_rs1_value when forward_rs1 = '1' else op1_data;
---	rs2_data <= fwd_rs2_value when forward_rs2 = '1' else op2_data;
+	rs1_data <= fwd_value_ex when forward_rs1_ex = '1' else
+					fwd_value_mem when forward_rs1_mem = '1' else
+					fwd_value_wb when forward_rs1_wb = '1' else 
+					op1_data;
+					
+	rs2_data <= fwd_value_ex when forward_rs2_ex = '1' else
+					fwd_value_mem when forward_rs2_mem = '1' else
+					fwd_value_wb when forward_rs2_wb = '1' else 
+					op2_data;
+	
+	flush_out <= '1' when stall = '1' else flush_next;
+	instr <= instr_from_if when stall = '0' else instr_next;
 	
 end impl;
+
