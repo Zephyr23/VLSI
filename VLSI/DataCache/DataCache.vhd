@@ -92,7 +92,7 @@ impure function init_mem (file_name: in string) return memory_array is
 		return succes;		
 	end function;
 	
-signal memory : memory_array := init_mem("C:\Users\Nenad\Desktop\vlsi-master\VLSI\DataCache\dataCacheInit.txt");
+signal memory : memory_array := init_mem("C:\Users\Lela\Desktop\VHDL projekat 10.6.2016\DataCache\dataCacheInit.txt");
 
 
 begin

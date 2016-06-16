@@ -23,8 +23,14 @@ port(
 	
 	st_value : out std_logic_vector((data_length - 1) downto 0);
 	
-	-- instrukcija
-	instr : in std_logic_vector((address_length - 1) downto 0);
+	-- dodao PC iz decode
+	pc_addr: in std_logic_vector((address_length-1) downto 0);
+	--branch za prediktor
+	branch_taken: out std_logic;
+	--da li treba da se azurira
+	update_predictor: out std_logic;
+	--vrednost koja se azurira
+	update_value: out std_logic_vector(63 downto 0);
 	
 		opcode_in : in std_logic_vector(5 downto 0);
 		opcode_out : out std_logic_vector((opcode_length-1) downto 0);
@@ -40,7 +46,6 @@ port(
 	-- Izlazni signali iz ALU jedinica
 	data_alu_out : out std_logic_vector((data_length - 1) downto 0);
 	psw_alu_out : out std_logic_vector((data_length - 1) downto 0);
-	instr_out:out std_logic_vector((data_length-1) downto 0); -- ne koristi se
 	
 	flush_out: out std_logic;
 	flush_id: in std_logic;
@@ -62,6 +67,8 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 	--signal opcode : std_logic_vector(5 downto 0);
 	begin 
 	process(clk)
+	
+		variable update: std_logic_vector(63 downto 0);
 		variable result : std_logic_vector(data_length downto 0);
 		variable psw : std_logic_vector((data_length - 1) downto 0);
 		
@@ -281,12 +288,107 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 				result := '0' & to_stdlogicvector(to_bitvector(op1_1) ror to_integer(unsigned(imm_value)));
 				ar_log<='1';
 				valid <='1';
+				
+			-- Instrukcije bezuslovnog skoka
+			-- Skace se na PC+imm_value
+			-- Salje se prediktoru update =
+			--	tag = pc_addr +
+			-- data = pc+imm_value
+			
+			--BEQ
+			when "101000" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 = op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			--BNQ
+			when "101001" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 /= op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			--BGT
+			when "101010" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 > op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			--BLT
+			when "101011" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 < op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			--BGE
+			when "101100" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 >= op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			--BLE
+			when "101101" =>
+			
+			update(63 downto 32) := pc_addr;
+			update(31 downto 0) := std_logic_vector(('0' & unsigned(pc_addr)) + ("00000000000000000" & unsigned(imm_value)))(31 downto 0);
+			
+			if(op1_1 <= op2_1) then 
+			branch_taken <= '1';
+			update_predictor <= '1';
+			else
+			branch_taken <= '0';
+			update_predictor <= '1';
+			end if;
+			
+			
 			
 			when others =>
 				null;
 			end case;
 		
 			data_alu_out <= result((data_length - 1) downto 0);
+			
+			update_value <= update (63 downto 0);
+			
 			psw_alu_out <= psw;
 			st_value <= op2_1;
 			rd_adr_out <= rd_adr;
@@ -295,6 +397,7 @@ constant zero_vector : std_logic_vector(data_length downto 0) := (others => '0')
 			
 		else
 			data_alu_out <= (others => 'Z');
+			update_value <= (others => 'Z');
 			psw_alu_out <= (others => 'Z');
 			rd_adr_out <= (others => 'Z');
 			opcode_out  <= (others => 'Z');

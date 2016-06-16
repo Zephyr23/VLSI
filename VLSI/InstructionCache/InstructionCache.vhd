@@ -82,10 +82,10 @@ end function;
 
 
 
-signal memory : memory_array := init_mem("C:\Users\Nenad\Desktop\vlsi-master\VLSI\InstructionCache\instructionCache.txt");
+signal memory : memory_array := init_mem("C:\Users\Lela\Desktop\VHDL projekat 10.6.2016\InstructionCache\instructionCache.txt");
 
 begin
-	initial_PC <= init_PC("C:\Users\Nenad\Desktop\vlsi-master\VLSI\InstructionCache\instructionCache.txt");
+	initial_PC <= init_PC("C:\Users\Lela\Desktop\VHDL projekat 10.6.2016\InstructionCache\instructionCache.txt");
 	process (clk)
 	begin
 		if (rising_edge(clk)) then
